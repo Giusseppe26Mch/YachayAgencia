@@ -19,7 +19,7 @@ namespace CapaNegocio
             return objCapaDato.Ventas(fechainicio, fechafin, idtransaccion);    
         }
 
-
+        //Agregar parámetros de objeto a la clase Tablero
         public Tablero VerTablero()
         {
             return objCapaDato.VerTablero();
