@@ -18,6 +18,8 @@ namespace CapaDatos
 
             try
             {
+
+                //Establecemos conexión a la conexión BD//
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
                     string query = "Select *from CONTACTO";
