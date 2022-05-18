@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Contacto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb mb-4 mt-4">
+    <li class="breadcrumb-item"><a href="index.html">RESUMEN</a></li>
+    <li class="breadcrumb-item active">Contacto</li>
+</ol>
+<div class="card">
+    <div class="card-header">
+
+        <i class="fas fa-users me-1"></i> Lista de Contacto
+
+
+    </div>
+
+    <div class="card-body">
+        <!--<div class="row">-->
+            @*<div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModal(null)">Crear Nuevo Contacto</button>
+
+            </div>*@
+
+        <!--</div>-->
+        <hr />
+        <table id="tabla" class="display cell-border" style="width:100%">
+
+
+            <thead>
+                <tr>
+                    <th>Nombre </th>
+                    <th>Apellido</th>
+                    <th>Celular </th>
+                    <th>Comentario</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Contacto</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+            </div>
+            <div class="modal-body">
+
+                <input id="txtid" type="text" value="0" />
+
+                <div class="row g-2">
+                    <div class="col-sm-6">
+                        <label for="txtnombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="txtnombre" autocomplete="off">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtruc" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" autocomplete="on">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtrepresentante" class="form-label">Celular</label>
+                        <input type="text" class="form-control" id="txtcelular" autocomplete="off">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="txtdireccion" class="form-label">Comentario</label>
+                        <input type="text" class="form-control" id="txtcomentario" autocomplete="off">
+                    </div>
+
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12">
+
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            A simple danger alert-check it out!
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar Cambios</button>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        var tabladata;
+        var filaSeleccionada;
+
+        tabladata = $("#tabla").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListarContacto","Home")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { "data": "Nombre" },
+                { "data": "Apellido" },
+                { "data": "Celular" },
+                { "data": "Comentario" },
+                
+               
+                {
+                    "defaultContent":  '<button type="button" class="btn btn-danger btn-sm ms-2 btn-eliminar"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width":"90px"
+                }
+            ],
+            "language": {
+               "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+            }
+
+        });
+        function abrirModal(json) {
+
+            $("#txtid").val(0);
+            $("#txtnombre").val("");
+            $("#txtapellido").val("");
+            $("#txtcelular").val("");
+            $("#txtcomentario").val("");
+   
+            if (json != null) {
+
+                $("#txtid").val(json.IdContacto);
+                $("#txtnombre").val(json.Nombre);
+                $("#txtapellido").val(json.Apellido);
+                $("#txtcelular").val(json.Celular);
+                $("#txtcomentario").val(json.Comentario);
+               
+            }
+
+
+            $("#FormModal").modal("show");
+        }
+       
+
+        function Guardar() {
+            var Contacto = {
+                IdContacto: $("#txtid").val(),
+                Nombre: $("#txtnombre").val(),
+                Apellido: $("#txtapellido").val(),
+                Celular: $("#txtcelular").val(),
+                Comentario: $("#txtcomentario").val(),
+              
+
+            }
+
+            //Estructura Ajax para hacer el llamado de los métodos de home Controller
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarContacto", "Home")',
+                type: "POST",
+                data: JSON.stringify({ objeto : Contacto }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    $(".modal-body").LoadingOverlay("hide")
+                    //Contacto NUEVO
+                    if (Contacto.IdContacto == 0) {
+
+                        if (data.resultado != 0) {
+                            Contacto.IdContacto = data.resultado;
+                            tabladata.row.add(Contacto).draw(false);
+                            $("#FormModal").modal("hide");
+                        }
+                        else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                    //Contacto EDITAR
+                    //else {
+                    //    if (data.resultado) {
+                    //        tabladata.row(filaSeleccionada).data(Contacto).draw(false);
+                    //        filaSeleccionada = null;
+                    //        $("#FormModal").modal("hide");
+                    //    } else {
+                    //        $("#mensajeError").text(data.mensaje);
+                    //        $("#mensajeError").show();
+                    //    }
+                    //}
+                },
+                //error: function (error) {
+                //    $("#mensajeError").LoadingOverlay("hide");
+                //    $("#mensajeError").text("Error Ajax");
+                //    $("#mensajeError").show();
+
+                //},
+               //beforeSend: function () {
+               //    $(".modal-body").LoadingOverlay("show", {
+               //        imageResizeFactor: 2,
+               //        text: "Cargando....",
+               //        size: 14
+               //    })
+               // }
+
+            });
+        }
+
+
+    </script>
+}
+
