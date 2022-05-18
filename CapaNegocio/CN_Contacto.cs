@@ -16,6 +16,7 @@ namespace CapaNegocio
         {
             // Filtrar el ID de Contacto y realizar un select donde ID de Contacto sea el que se ha buscado//
             return objCapaDato.Listar();
+            //Alterar//
 
         }
 
