@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-    public class Carrito
+    public class Bolsadeviaje
 
     {
-        public int IdCarrito { get; set; }
+        public int IdBolsadeviaje { get; set; }
 
         public Cliente oCliente { get; set; }
 

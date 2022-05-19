@@ -169,6 +169,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
         public ActionResult CerrarSesion()
         {
+            Session["Cliente"] = null;
             FormsAuthentication.SignOut(); //Indicamos que se cierre la sesión.
             return RedirectToAction("Index", "Acceso");
         }

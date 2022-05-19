@@ -18,10 +18,17 @@ namespace CapaPresentaciónAgencia
             // para la producción, use la herramienta de compilación disponible en https://modernizr.com para seleccionar solo las pruebas que necesite.
            //             "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.bundle.js"));
+            bundles.Add(new Bundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.bundle.js",
+                      "~/Scripts/fontawesome/all.min.js",
+                      "~/Scripts/loadingoverlay.min.js",
+                      "~/Scripts/sweetalert.js"
+                ));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+                "~/Content/sweetalert.css",
+
+                "~/Content/site.css"));
         }
     }
 }
