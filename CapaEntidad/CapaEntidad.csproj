@@ -60,6 +60,7 @@
     <Compile Include="Reporte.cs" />
     <Compile Include="Reserva.cs" />
     <Compile Include="Tablero.cs" />
+    <Compile Include="Tour.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Venta.cs" />
   </ItemGroup>
