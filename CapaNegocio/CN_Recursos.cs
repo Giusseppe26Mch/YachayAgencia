@@ -16,7 +16,7 @@ namespace CapaNegocio
    public class CN_Recursos
     {
 
-
+        //ENCRIPTACION, CONVERSION FORMATO IMAGENES
         //MÉTODOS QUE PERMITAN GENERAR CLAVES AUTOMÁTICAS
 
             public static string GenerarClave()
