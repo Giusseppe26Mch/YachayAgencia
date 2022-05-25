@@ -146,5 +146,45 @@ namespace CapaDatos
             }
             return resultado;
         }
+        public List<PaqueteTuristico> ListarPaqueteporCategoria(int idcategoria)
+        {
+            List<PaqueteTuristico> lista = new List<PaqueteTuristico>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("select distinct p.IdPaquete, p.Descripcion from RESERVA r");
+                    sb.AppendLine("select distinct p.IdPaquete, p.Descripcion from RESERVA r");
+                    sb.AppendLine("inner join PaqueteTuristico p on p.IdPaquete = r.IdPaquete and p.Activo = 1");
+                    sb.AppendLine("where c.IdCategoria = iif(@idcategoria = 0, c.IdCategoria, @idcategoria)");
+
+                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
+                    cmd.Parameters.AddWithValue("@idcategoria", idcategoria);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                 new PaqueteTuristico()
+                                 {
+                                     IdPaquete = Convert.ToInt32(dr["IdPaquete"]),
+                                     Descripcion = dr["Descripcion"].ToString(),
+                                 });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                lista = new List<PaqueteTuristico>();
+            }
+
+            return lista;
+        }
     }
 }

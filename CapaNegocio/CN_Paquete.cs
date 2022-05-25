@@ -58,5 +58,9 @@ namespace CapaNegocio
         {
             return objCapaDato.Eliminar(id, out Mensaje);
         }
+        public List<PaqueteTuristico> ListarPaqueteporCategoria(int idcategoria)
+        {
+            return objCapaDato.ListarPaqueteporCategoria(idcategoria);
+        }
     }
 }
