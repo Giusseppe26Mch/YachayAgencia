@@ -9,6 +9,16 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="d-flex flex-column min-vh-100">
+    <!-- Código de instalación Cliengo para  giusseppemch@gmail.com -->
+    @*<script type="text/javascript">
+        (function () {
+                var ldk = document.createElement('script');
+                ldk.type = 'text/javascript';
+                ldk.async = true;
+                ldk.src = 'https://s.cliengo.com/weboptimizer/625fb2e3d8591f002a92798e/625fb98315b21d002a694cbd.js?platform=view_installation_code';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ldk, s);
+            })();</script>*@
     <nav class="navbar navbar-expand-lg navbar-dark navbar" style="background-color:#ff6a00" ;>
         <div class="container px-4">
             <a class="navbar-brand" href="@Url.Action("Index","Tienda")">Agencia Yachay Tours</a>
@@ -39,9 +49,9 @@
 
                     else
                     {
-                        <a class="btn btn-outline-dark" href="@Url.Action("Carrito","Tienda")">
+                        <a class="btn btn-outline-dark" href="@Url.Action("BolsadeViaje","Tienda")">
                             <i class="fas fa-shopping-bag me-1"></i>
-                            Cart
+                            Bolsa de viajes
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </a>
                         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -57,24 +67,21 @@
                         </ul>
                     }
 
-
-
-
-
-
                 </form>
             </div>
         </div>
 
     </nav>
     @RenderBody()
-  
-       
+
+
     <footer>
         <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+ 
 </body>
 </html>

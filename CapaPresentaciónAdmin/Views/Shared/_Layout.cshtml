@@ -9,16 +9,7 @@
    @*@ @Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body class="sb-nav-fixed">
-    <!-- Código de instalación Cliengo para  giusseppemch@gmail.com -->
-    @*<script type="text/javascript">
-    (function () {
-            var ldk = document.createElement('script');
-            ldk.type = 'text/javascript';
-            ldk.async = true;
-            ldk.src = 'https://s.cliengo.com/weboptimizer/625fb2e3d8591f002a92798e/625fb98315b21d002a694cbd.js?platform=view_installation_code';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ldk, s);
-        })();</script>*@
+  
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
         <!-- Navbar Brand-->
@@ -45,7 +36,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Datos del Usuario</a></li>
+                    
+                    <li><a class="dropdown-item" href="#!"><b>Correo de usuario: @User.Identity.Name</b></a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="@Url.Action("CerrarSesion","Acceso")">Cerrar Sesión</a></li>
                 </ul>
