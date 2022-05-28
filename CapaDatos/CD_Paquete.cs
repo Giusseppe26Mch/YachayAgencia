@@ -156,7 +156,7 @@ namespace CapaDatos
                 {
                     StringBuilder sb = new StringBuilder();
                     sb.AppendLine("select distinct p.IdPaquete, p.Descripcion from RESERVA r");
-                    sb.AppendLine("select distinct p.IdPaquete, p.Descripcion from RESERVA r");
+                    sb.AppendLine("inner join CATEGORIA c on c.IdCategoria = r.IdCategoria");
                     sb.AppendLine("inner join PaqueteTuristico p on p.IdPaquete = r.IdPaquete and p.Activo = 1");
                     sb.AppendLine("where c.IdCategoria = iif(@idcategoria = 0, c.IdCategoria, @idcategoria)");
 

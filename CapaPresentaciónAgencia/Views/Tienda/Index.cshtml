@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -12,25 +11,25 @@
         </div>
     </div>
 </header>
-<!-- Section-->
-<section>
+<!-- Servicios-->
+<section class="page-section" id="servicios">
     <div class="container px-4 px-5 my-5">
 
         <div class="row">
 
-            <div class="col-sm-3" >
+            <div class="col-sm-3">
 
                 <div class="row mb-3">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header text-light" style="background-color:#ff6a00" >
-                            Categorías
-                        </div>
-                        <div id="contenedor_categoria" class="card-body">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header text-light" style="background-color:#ff6a00">
+                                Categorías
+                            </div>
+                            <div id="contenedor_categoria" class="card-body">
+                            </div>
                         </div>
                     </div>
                 </div>
-             </div>
                 <div class="row mb-3">
                     <div class="col-sm-12">
                         <div class="card">
@@ -57,7 +56,7 @@
             </div>
 
             <div class="col-sm-9">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div id="contenedor_reserva" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
@@ -113,9 +112,54 @@
             </div>
 
         </div>
-        
-      
+
+
     </div>
+</section>
+
+
+
+<!-- QUIENES SOMOS-->
+<section class="page-section" id="quienessomos">
+
+
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">SOMOS UNA EMPRESA PYME DESDE EL 2013</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5 my-5">
+        <div style="display: block; margin-top:5px; ">
+            <!-- <p class="title">TRATAMIENTO DE DATOS PERSONALES PARA OTROS USOS</p> -->
+
+            <p>
+                <strong>NUESTROS CLIENTES: </strong>
+                Contamos con una cartera de clientes de lo más extensa y variada, en el Perú somos distribuidores de viajes de los principales sistemas de lealtad y estamos
+                comprometidos con la cultura, mostrando nuestro apoyo en el rubro a través de auspicios. Nos prefieren más de 850 empresas corporativas, 27 000 personas naturales,
+                1,100 agencias de viajes del Perú y la más exclusiva red de agencias internacionales. En el área de turismo receptivo, estamos seguros de contar con los requisitos
+                que nos harán su mejor socio.
+                El equipo de turismo receptivo conoce todo el Perú, sus recursos e infraestructura turística. Ofrecemos nuestra experiencia para brindar a sus clientes el mejor servicio y atención.
+            </p>
+            <p>
+                <strong>MISIÓN: </strong>
+                Ser la empresa líder en turismo ofreciendo servicios de calidad para satisfacción de los clientes, obteniendo la mayor rentabilidad y participación del mercado que nos permita crecer personas y como empresa.
+            </p>
+            <p>
+                <strong>VISIÓN: </strong>
+                Mantenernos como líderes en el sector turismo, basados en un grupo humano cohesionado, capacitado y con vocación de servicio, enfocados
+                en los clientes dentro de un entorno de constante innovación, dinamismo, rentabilidad y competitividad.
+            </p>
+
+
+            <br />
+
+        </div>
+        <br />
+
+        </div>
+
 </section>
 
 <!-- Contact-->
@@ -183,19 +227,190 @@
     </div>
 </section>
 
-<footer class="footer py-4" >
+
+
+<footer class="footer py-4">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-4 text-lg-start">Derechos Reservados &copy; TSAY</div>
-            <div class="col-lg-4 my-3 my-lg-0">
+            
+            <div class="col-lg-4 my-3 text-center">
                 <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <div class="col-lg-4 text-lg-end">
-                <a class="link-dark text-decoration-none me-3" href="#!">Políticas de privacidad</a>
-                <a class="link-dark text-decoration-none" href="#!">Términos de uso</a>
+            <div class="col-lg-4  text-center">
+                <a class="link-dark text-decoration-none me-3" href="@Url.Action("PolíticasAgencia","Tienda")">Políticas de privacidad</a>
+                <a class="link-dark text-decoration-none" href="@Url.Action("TérminosAgencia","Tienda")">Términos de uso</a>
             </div>
         </div>
     </div>
 </footer>
+
+
+
+@section scripts{
+    <script>
+         $(document).ready(function () {
+
+            MostrarCategorias();
+            MostrarReservas(0, 0);
+        })
+        function MostrarCategorias()
+        {
+            jQuery.ajax({
+                url: "@Url.Action("ListaCategorias","Tienda")",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+
+
+                    $("#contenedor_categoria").LoadingOverlay("hide");
+
+                    $("<div>").addClass("form-check").append(
+
+                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": "0", "id": "cx", "checked": "checked" }),
+                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "cx" })
+                    ).appendTo("#contenedor_categoria")
+
+                    //Al momento de iterar cada uno de los elementos de "data", creará cada elemento dentro de la categoría//
+                    $.each(response.data, function (i, element) {
+
+                        $("<div>").addClass("form-check").append(
+                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": element.IdCategoria, "id": "c" + i }),
+                            $("<label>").addClass("form-check-label").text(element.Descripcion).attr({ "for": "c" + i })
+                        ).appendTo("#contenedor_categoria")
+
+                    })
+                    MostrarPaquete();
+                }, //Antes de enviar que muestre una interfaz de carga//
+                beforeSend: function () {
+                    $("#contenedor_categoria").LoadingOverlay("show");
+                }
+
+            })
+        }
+
+        function MostrarPaquete()
+        //Solo obtendremos aquel que esté seleccionado//
+
+        {
+            var _idcategoria = $("input[name=categoria]:checked").val()
+
+            jQuery.ajax({
+                url: "@Url.Action("ListarPaqueteporCategoria", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({idcategoria: _idcategoria}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+
+                    $("#contenedor_paquete").html("");// Le indicamos que limpie todo el contenedor, para que pueda pintar el contenido de los paquetes//
+                    $("#contenedor_paquete").LoadingOverlay("hide");
+
+                    $("<div>").addClass("form-check").append(
+
+                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "paquete", "value": "0", "id": "px", "checked": "checked" }),
+                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "px" })
+                    ).appendTo("#contenedor_paquete")
+
+                    //Al momento de iterar cada uno de los elementos de "data", creará cada elemento dentro del paquete//
+                    $.each(response.data, function (i, element) {
+
+                        $("<div>").addClass("form-check").append(
+                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "paquete", "value": element.IdPaquete, "id": "p" + i }),
+                            $("<label>").addClass("form-check-label").text(element.Descripcion).attr({ "for": "p" + i })
+                        ).appendTo("#contenedor_paquete")
+
+                    })
+                }, //Antes de enviar que muestre una interfaz de carga//
+                beforeSend: function () {
+                    $("#contenedor_paquete").LoadingOverlay("show");
+                }
+
+            })
+        }
+
+        //Llamado a todo el documento ejecutamos ciertas acciones durante un cambio utilizando el controlador "input"//
+        $(document).on("change", "input[name=categoria]", function () {
+
+            MostrarPaquete();
+
+        })
+
+
+        function MostrarReservas(_idcategoria, _idpaquete)        //Solo obtendremos aquel que esté seleccionado//
+
+
+        {
+
+
+            jQuery.ajax({
+                url: "@Url.Action("ListarReserva", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idcategoria: _idcategoria, idpaquete: _idpaquete }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+
+                    $("#contenedor_reserva").html("");// Le indicamos que limpie todo el contenedor, para que pueda pintar el contenido de los paquetes//
+                    $("#contenedor_reserva").LoadingOverlay("hide");
+
+
+                    $.each(response.data, function (i, element) {
+                        $("<div>").addClass("col mb-5").append(
+                            $("<div>").addClass("card h-100").append(
+                                $("<img>").addClass("card-img-top").attr({ "src": "data:image/" + element.Extension + ";base64," + element.Base64 }),
+                                $("<div>").addClass("card-body p-4").append(
+                                    $("<div>").addClass("text-center").append(
+                                        $("<h5>").addClass("fw-bolder").text(element.Nombre),
+                                        "S/. " + element.Precio.toFixed(2) + " " + " Soles"
+                                    )
+
+
+
+                                ),
+
+                                  $("<div>").addClass("card-footer p-2 pt-0 vorder-top-0 bg-transparent").append
+                                        (
+
+
+                                            $("<div>").addClass("d-grid gap-2").append(
+                                            @if (Session["Cliente"] !=null)
+                                            {
+
+                                             @:$("<button>").addClass("btn btn-success mt-auto agregarbolsa").data("idreserva", element.IdReserva).text("Agregar a Bolsa"),
+                                            }
+                                            $("<a>").addClass("btn btn-dark mt-auto")
+                                                .attr({ "href":"@Url.Action("DetalleReserva","Tienda")" + "? idreserva =" + element.IdReserva})
+                                                .text("Ver detalle")
+                                             )
+                                    )
+                            )
+
+                        ).appendTo("#contenedor_reserva")
+
+                    })
+                }, //Antes de enviar que muestre una interfaz de carga//
+                beforeSend: function () {
+                    $("#contenedor_reserva").LoadingOverlay("show");
+                }
+
+            })
+        }
+
+
+
+        $("#btnaplicarfiltro").click(function () {
+         var _idcategoria = $("input[name=categoria]:checked").val()
+         var _idpaquete   = $("input[name=paquete]:checked").val()
+
+         MostrarReservas(_idcategoria, _idpaquete)
+
+
+        })
+
+
+
+    </script>
+}

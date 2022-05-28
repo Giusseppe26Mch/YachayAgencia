@@ -26,8 +26,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="@Url.Action("Index","Tienda")">INICIO</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#services">SERVICIOS</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#team">QUIENES SOMOS</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#servicios">SERVICIOS</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#quienessomos">QUIENES SOMOS</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#contact">CONTÁCTANOS</a></li>
                     @*<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
@@ -75,8 +75,8 @@
     @RenderBody()
 
 
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - Desarrollado por : TSAY</p>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
