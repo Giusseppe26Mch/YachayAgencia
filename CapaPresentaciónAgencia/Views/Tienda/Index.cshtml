@@ -121,7 +121,7 @@
 
 
 <!-- QUIENES SOMOS-->
-<section class="page-section" id="quienessomos">
+<!--<section class="page-section" id="quienessomos">
 
 
     <header class="bg-dark py-5">
@@ -132,10 +132,10 @@
         </div>
     </header>
     <div class="container px-4 px-lg-5 my-5">
-        <div style="display: block; margin-top:5px; ">
+        <div style="display: block; margin-top:5px; ">-->
             <!-- <p class="title">TRATAMIENTO DE DATOS PERSONALES PARA OTROS USOS</p> -->
 
-            <p>
+            <!--<p>
                 <strong>NUESTROS CLIENTES: </strong>
                 Contamos con una cartera de clientes de lo más extensa y variada, en el Perú somos distribuidores de viajes de los principales sistemas de lealtad y estamos
                 comprometidos con la cultura, mostrando nuestro apoyo en el rubro a través de auspicios. Nos prefieren más de 200 personas, del distrito y regiones que brindamos servicio de turismo.
@@ -160,16 +160,16 @@
 
     </div>
 
-</section>
+</section>-->
 
 
 <!-- Contact-->
-<section class="page-section" id="contact">
+<!--<section class="page-section" id="contact">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">CONTÁCTANOS</h2>
             <h3 class="section-subheading text-muted">NOS PONDREMOS EN CONTACTO CONTIGO</h3>
-        </div>
+        </div>-->
         <!-- * * * * * * * * * * * * * * *-->
         <!-- * * SB Forms Contact Form * *-->
         <!-- * * * * * * * * * * * * * * *-->
@@ -177,60 +177,60 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+        <!--<form id="contactForm" data-sb-form-api-token="API_TOKEN">
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group">-->
                         <!-- Name input-->
-                        <input class="form-control" id="name" type="text" placeholder="Nombre" data-sb-validations="required" />
+                        <!--<input class="form-control" id="name" type="text" placeholder="Nombre" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">Ingrese su nombre.</div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group">-->
                         <!-- Email address input-->
-                        <input class="form-control" id="email" type="email" placeholder="Correo" data-sb-validations="required,email" />
+                        <!--<input class="form-control" id="email" type="email" placeholder="Correo" data-sb-validations="required,email" />
                         <div class="invalid-feedback" data-sb-feedback="email:required">Se requiere que ingrese su correo</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">El correo es incorrecto.</div>
                     </div>
-                    <div class="form-group mb-md-0">
+                    <div class="form-group mb-md-0">-->
                         <!-- Phone number input-->
-                        <input class="form-control" id="phone" type="tel" placeholder="Número de celular" data-sb-validations="required" />
+                        <!--<input class="form-control" id="phone" type="tel" placeholder="Número de celular" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="phone:required"> Ingrese su número de celular</div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group form-group-textarea mb-md-0">
+                    <div class="form-group form-group-textarea mb-md-0">-->
                         <!-- Message input-->
-                        <textarea class="form-control" id="message" placeholder="Comentario" data-sb-validations="required"></textarea>
+                        <!--<textarea class="form-control" id="message" placeholder="Comentario" data-sb-validations="required"></textarea>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!-- Submit success message-->
             <!---->
             <!-- This is what your users will see when the form-->
             <!-- has successfully submitted-->
-            <div class="d-none" id="submitSuccessMessage">
+            <!--<div class="d-none" id="submitSuccessMessage">
                 <div class="text-center text-white mb-3">
                     <div class="fw-bolder">Form submission successful!</div>
                     To activate this form, sign up at
                     <br />
                     <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                 </div>
-            </div>
+            </div>-->
             <!-- Submit error message-->
             <!---->
             <!-- This is what your users will see when there is-->
             <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage">
+            <!--<div class="d-none" id="submitErrorMessage">
                 <div class="text-center text-danger mb-3">
                     Error en el envío del mensaje
                 </div>
-            </div>
+            </div>-->
             <!-- Submit Button-->
-            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">ENVIAR COMENTARIO</button></div>
+            <!--<div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">ENVIAR COMENTARIO</button></div>
         </form>
     </div>
-</section>
+</section>-->
 
 
 
@@ -305,7 +305,7 @@
             jQuery.ajax({
                 url: "@Url.Action("ListarPaqueteporCategoria", "Tienda")",
                 type: "POST",
-                data: JSON.stringify({idcategoria: _idcategoria}),
+                data: JSON.stringify({ idcategoria: _idcategoria }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
@@ -335,49 +335,48 @@
 
             })
         }
+            //Llamado a todo el documento ejecutamos ciertas acciones durante un cambio utilizando el controlador "input"//
+            $(document).on("change", "input[name=categoria]", function () {
 
-        //Llamado a todo el documento ejecutamos ciertas acciones durante un cambio utilizando el controlador "input"//
-        $(document).on("change", "input[name=categoria]", function () {
+                MostrarPaquete();
 
-            MostrarPaquete();
+            })
 
-        })
-
-
-        function MostrarReservas(_idcategoria, _idpaquete)        //Solo obtendremos aquel que esté seleccionado//
-
-
-        {
+        
+            function MostrarReservas(_idcategoria, _idpaquete)        //Solo obtendremos aquel que esté seleccionado//
 
 
-            jQuery.ajax({
-                url: "@Url.Action("ListarReserva", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idcategoria: _idcategoria, idpaquete: _idpaquete }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-
-                    $("#contenedor_reserva").html("");// Le indicamos que limpie todo el contenedor, para que pueda pintar el contenido de los paquetes//
-                    $("#contenedor_reserva").LoadingOverlay("hide");
+            {
 
 
-                    $.each(response.data, function (i, element) {
+                jQuery.ajax({
+                    url: "@Url.Action("ListarReserva", "Tienda")",
+                    type: "POST",
+                    data: JSON.stringify({ idcategoria: _idcategoria, idpaquete: _idpaquete }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
 
-                        $("<div>").addClass("col mb-5").append(
-                            $("<div>").addClass("card h-100").append(
-                                $("<img>").addClass("card-img-top").attr({ "src": "data:image/" + element.Extension + ";base64," + element.Base64 }),
-                                $("<div>").addClass("card-body p-4").append(
-                                    $("<div>").addClass("text-center").append(
-                                        $("<h5>").addClass("fw-bolder").text(element.Nombre),
-                                        "S/. " + element.Precio.toFixed(2) + " " + " PEN"
-                                    )
+                        $("#contenedor_reserva").html("");// Le indicamos que limpie todo el contenedor, para que pueda pintar el contenido de los paquetes//
+                        $("#contenedor_reserva").LoadingOverlay("hide");
+
+
+                        $.each(response.data, function (i, element) {
+
+                            $("<div>").addClass("col mb-5").append(
+                                $("<div>").addClass("card h-100").append(
+                                    $("<img>").addClass("card-img-top").attr({ "src": "data:image/" + element.Extension + ";base64," + element.Base64 }),
+                                    $("<div>").addClass("card-body p-4").append(
+                                        $("<div>").addClass("text-center").append(
+                                            $("<h5>").addClass("fw-bolder").text(element.Nombre),
+                                            "S/. " + element.Precio.toFixed(2) + " " + " PEN"
+                                        )
 
 
 
-                                ),
+                                    ),
 
-                                  $("<div>").addClass("card-footer p-2 pt-0 vorder-top-0 bg-transparent").append
+                                    $("<div>").addClass("card-footer p-2 pt-0 vorder-top-0 bg-transparent").append
                                         (
 
 
@@ -387,68 +386,75 @@
 
                                              @:$("<button>").addClass("btn btn-success mt-auto agregarbolsa").data("idreserva", element.IdReserva).text("Agregar a Bolsa"),
                                             }
-                                            $("<a>").addClass("btn btn-dark mt-auto")
-                                                .attr({ "href":"@Url.Action("DetalleReserva","Tienda")" + "?idreserva=" + element.IdReserva})
-                                                .text("Ver detalle")
-                                             )
+                                                $("<a>").addClass("btn btn-dark mt-auto")
+                                                    .attr({ "href": "@Url.Action("DetalleReserva","Tienda")" + "?idreserva=" + element.IdReserva })
+                                                    .text("Ver detalle")
+                                            )
                                     )
-                            )
+                                )
 
-                        ).appendTo("#contenedor_reserva")
-
-                    })
-                }, //Antes de enviar que muestre una interfaz de carga//
-                beforeSend: function () {
-                    $("#contenedor_reserva").LoadingOverlay("show");
-                }
-
-            })
-        }
-
-
-
-        $("#btnaplicarfiltro").click(function () {
-         var _idcategoria = $("input[name=categoria]:checked").val()
-         var _idpaquete   = $("input[name=paquete]:checked").val()
-
-         MostrarReservas(_idcategoria, _idpaquete)
-
-
-        })
-
-        $(document).on("click", "button.agregarbolsa", function () {
-            console.log($(this).data("idreserva"))
-            jQuery.ajax({
-                url: '@Url.Action("AgregarBolsa", "Tienda")',
-                type: "POST",
-                data: JSON.stringify({ idreserva: $(this).data("idreserva") }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-
-                    if (data.respuesta) {
-                        MostrarCantidadBolsa();
-                        swal({
-                            title: "Agregado a la bolsa de viaje",
-                            text: "¿Desea ir a la bola de viaje?",
-                            type: "success",
-                            showCancelButton: true,
-                            confirmButtonClass: "btn-primary",
-                            confirmButtonText: "SÍ",
-                            cancelButtonText: "NO",
-                            closeOnConfirm: true
-                        }, function () {
-
-                            window.location.href = '@Url.Action("BolsaViaje","Tienda")'
-
+                            ).appendTo("#contenedor_reserva")
 
                         })
-                    } else {
-                        swal("", data.mensaje, "warning");
+                    }, //Antes de enviar que muestre una interfaz de carga//
+                    beforeSend: function () {
+                        $("#contenedor_reserva").LoadingOverlay("show");
                     }
-                }
+
+                })
+            }
+
+
+
+            $("#btnaplicarfiltro").click(function () {
+                var _idcategoria = $("input[name=categoria]:checked").val()
+                var _idpaquete = $("input[name=paquete]:checked").val()
+
+                MostrarReservas(_idcategoria, _idpaquete)
+
+
+            })
+
+            $(document).on("click", "button.agregarbolsa", function () {
+
+                console.log($(this).data("idreserva"))
+
+                jQuery.ajax({
+                    url: '@Url.Action("AgregarBolsa", "Tienda")',
+                    type: "POST",
+                    data: JSON.stringify({ idreserva: $(this).data("idreserva") }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.respuesta) {
+                            MostrarCantidadBolsa();
+                            swal({
+                                title: "Agregado a la bolsa de viaje",
+                                text: "¿Desea ir a la bola de viaje?",
+                                type: "success",
+                                showCancelButton: true,
+                                confirmButtonClass: "btn-primary",
+                                confirmButtonText: "SÍ",
+                                cancelButtonText: "NO",
+                                closeOnConfirm: true
+                            },
+
+                                function () {
+
+                                window.location.href = '@Url.Action("BolsaViaje","Tienda")'
+
+
+                            })
+                        } else {
+                            swal("", data.mensaje, "warning");
+                        }
+                    }
                 });
-        })
+            })
+        
+
+
 
     </script>
 }

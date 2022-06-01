@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CN_BOLSAVIAJE.cs" />
+    <Compile Include="CN_BolsaViaje.cs" />
     <Compile Include="CN_Categoria.cs" />
     <Compile Include="CN_Cliente.cs" />
     <Compile Include="CN_Contacto.cs" />

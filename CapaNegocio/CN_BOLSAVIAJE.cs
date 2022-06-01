@@ -8,7 +8,7 @@ using CapaEntidad;
 
 namespace CapaNegocio
 {
-    public class CN_BOLSAVIAJE
+    public class CN_BolsaViaje
     {
         private CD_BOLSAVIAJE objCapaDato = new CD_BOLSAVIAJE();
 

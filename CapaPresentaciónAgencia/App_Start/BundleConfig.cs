@@ -26,8 +26,8 @@ namespace CapaPresentaciónAgencia
                 ));
             bundles.Add(new StyleBundle("~/Content/css").Include(
 
-                "~/Content/sweetalert.css",
-                "~/Content/site.css"));
+                "~/Content/site.css",
+                "~/Content/sweetalert.css"));
         }
     }
 }

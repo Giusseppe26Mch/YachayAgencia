@@ -22,6 +22,10 @@ namespace CapaPresentaciónAgencia.Controllers
         {
             return View();
         }
+        public ActionResult BolsaViaje()
+        {
+            return View();
+        }
 
 
         public ActionResult DetalleReserva(int idreserva = 0)
@@ -98,7 +102,7 @@ namespace CapaPresentaciónAgencia.Controllers
         {
             //Convertimos esta sesión en un objeto "Cliente"
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
-            bool existe = new CN_BOLSAVIAJE().ExisteSolicitud(idcliente, idreserva);
+            bool existe = new CN_BolsaViaje().ExisteSolicitud(idcliente, idreserva);
 
             bool respuesta = false; //Por defecto vacío
 
@@ -110,7 +114,7 @@ namespace CapaPresentaciónAgencia.Controllers
             }
             else
             {
-                respuesta = new CN_BOLSAVIAJE().Operaciones(idcliente, idreserva, true, out mensaje);
+                respuesta = new CN_BolsaViaje().Operaciones(idcliente, idreserva, true, out mensaje);
             }
             return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet); 
         }
@@ -120,7 +124,7 @@ namespace CapaPresentaciónAgencia.Controllers
         public JsonResult CantidadEnBolsa()
         {
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
-            int cantidad = new CN_BOLSAVIAJE().CantidadEnBolsa(idcliente);
+            int cantidad = new CN_BolsaViaje().CantidadEnBolsa(idcliente);
             return Json(new { cantidad = cantidad }, JsonRequestBehavior.AllowGet);
         }
 
