@@ -52,7 +52,7 @@
                         <a class="btn btn-outline-dark" href="@Url.Action("BolsadeViaje","Tienda")">
                             <i class="fas fa-shopping-bag me-1"></i>
                             Bolsa de viajes
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="cantidadbolsa">0</span>
                         </a>
                         <ul class="navbar-nav ms-auto me-0 me-md-3 my-2 my-md-0">
                             <li class="nav-item dropdown">
@@ -83,6 +83,29 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
+
+
+<script>
+    function MostrarCantidadBolsa() {
+        if ($("#cantidadbolsa").length > 0) {
+            jQuery.ajax(
+                {
+                    url: '@Url.Action("CantidadEnBolsa","Tienda")',
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset =utf-8",
+                    success: function (data) {
+                        $("#cantidadbolsa").text(data.cantidad);
+                    }
+                })
+        }
+    }
+
+
+
+
+
+</script>
  
 </body>
 </html>
