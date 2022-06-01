@@ -92,5 +92,38 @@ namespace CapaPresentaciónAgencia.Controllers
         }
 
 
+        [HttpPost]
+
+        public JsonResult AgregarBolsa (int idreserva)
+        {
+            //Convertimos esta sesión en un objeto "Cliente"
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
+            bool existe = new CN_BOLSAVIAJE().ExisteSolicitud(idcliente, idreserva);
+
+            bool respuesta = false; //Por defecto vacío
+
+            string mensaje = string.Empty; //Por defecto vacío
+
+            if (existe)
+            {
+                mensaje = "La reserva ya ha sido agregada anteriormente";
+            }
+            else
+            {
+                respuesta = new CN_BOLSAVIAJE().Operaciones(idcliente, idreserva, true, out mensaje);
+            }
+            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet); 
+        }
+
+
+        [HttpGet]
+        public JsonResult CantidadEnBolsa()
+        {
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
+            int cantidad = new CN_BOLSAVIAJE().CantidadEnBolsa(idcliente);
+            return Json(new { cantidad = cantidad }, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
