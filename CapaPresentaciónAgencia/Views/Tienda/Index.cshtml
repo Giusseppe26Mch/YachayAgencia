@@ -12,6 +12,7 @@
     </div>
 </header>
 <!-- Servicios-->
+<span class="irarriba fas fa-up"> </span>
 <section class="page-section" id="servicios">
     <div class="container px-4 px-5 my-5">
 
@@ -137,9 +138,8 @@
             <p>
                 <strong>NUESTROS CLIENTES: </strong>
                 Contamos con una cartera de clientes de lo más extensa y variada, en el Perú somos distribuidores de viajes de los principales sistemas de lealtad y estamos
-                comprometidos con la cultura, mostrando nuestro apoyo en el rubro a través de auspicios. Nos prefieren más de 850 empresas corporativas, 27 000 personas naturales,
-                1,100 agencias de viajes del Perú y la más exclusiva red de agencias internacionales. En el área de turismo receptivo, estamos seguros de contar con los requisitos
-                que nos harán su mejor socio.
+                comprometidos con la cultura, mostrando nuestro apoyo en el rubro a través de auspicios. Nos prefieren más de 200 personas, del distrito y regiones que brindamos servicio de turismo.
+                En el área de turismo receptivo, estamos seguros de contar con los requisitos que nos harán su mejor socio.
                 El equipo de turismo receptivo conoce todo el Perú, sus recursos e infraestructura turística. Ofrecemos nuestra experiencia para brindar a sus clientes el mejor servicio y atención.
             </p>
             <p>
@@ -158,9 +158,10 @@
         </div>
         <br />
 
-        </div>
+    </div>
 
 </section>
+
 
 <!-- Contact-->
 <section class="page-section" id="contact">
@@ -220,7 +221,11 @@
             <!---->
             <!-- This is what your users will see when there is-->
             <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error en el envío del mensaje</div></div>
+            <div class="d-none" id="submitErrorMessage">
+                <div class="text-center text-danger mb-3">
+                    Error en el envío del mensaje
+                </div>
+            </div>
             <!-- Submit Button-->
             <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">ENVIAR COMENTARIO</button></div>
         </form>
@@ -232,7 +237,7 @@
 <footer class="footer py-4">
     <div class="container">
         <div class="row align-items-center">
-            
+
             <div class="col-lg-4 my-3 text-center">
                 <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -250,7 +255,7 @@
 
 @section scripts{
     <script>
-         $(document).ready(function () {
+        $(document).ready(function () {
 
             MostrarCategorias();
             MostrarReservas(0, 0);
@@ -364,7 +369,7 @@
                                 $("<div>").addClass("card-body p-4").append(
                                     $("<div>").addClass("text-center").append(
                                         $("<h5>").addClass("fw-bolder").text(element.Nombre),
-                                        "S/. " + element.Precio.toFixed(2) + " " + " Soles"
+                                        "S/. " + element.Precio.toFixed(2) + " " + " PEN"
                                     )
 
 

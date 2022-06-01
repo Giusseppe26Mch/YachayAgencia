@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using CapaEntidad;
+﻿using CapaEntidad;
 using CapaNegocio;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace CapaPresentaciónAgencia.Controllers
 {
@@ -32,13 +30,13 @@ namespace CapaPresentaciónAgencia.Controllers
             bool conversion;
 
             oReserva = new CN_Reserva().Listar().Where(r => r.IdReserva == idreserva).FirstOrDefault();
-            if (oReserva !=null)
+            if (oReserva != null)
             {
                 oReserva.Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oReserva.RutaImagen, oReserva.NombreImagen), out conversion);
                 oReserva.Extension = Path.GetExtension(oReserva.NombreImagen);
             }
 
-            return View();
+            return View(oReserva);
         }
 
         //Método que devuelve la lista de las categorías 
@@ -51,7 +49,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
-        
+
         [HttpPost]
         public JsonResult ListarPaqueteporCategoria(int idcategoria)
         {
@@ -90,7 +88,7 @@ namespace CapaPresentaciónAgencia.Controllers
             jsonresult.MaxJsonLength = int.MaxValue;
             return jsonresult;
 
-                
+
         }
 
 
