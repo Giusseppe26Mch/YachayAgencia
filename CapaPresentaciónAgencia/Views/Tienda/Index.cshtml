@@ -430,19 +430,16 @@
                         if (data.respuesta) {
                             MostrarCantidadBolsa();
                             swal({
-                                title: "Agregado a la bolsa de viaje",
-                                text: "¿Desea ir a la bola de viaje?",
+
+                                title: "Agregado a la Bolsa de viaje",
+                                text: "¿Desea ir a la Bolsa de viaje?",
                                 type: "success",
                                 showCancelButton: true,
-                                confirmButtonClass: "btn-primary",
                                 confirmButtonText: "SÍ",
                                 cancelButtonText: "NO",
                                 closeOnConfirm: true
-                            },
-
-                                function () {
-
-                                window.location.href = '@Url.Action("BolsaViaje","Tienda")'
+                            }, function () {
+                                window.location.href = 'Url.Action("BolsaViaje","Tienda")'
 
 
                             })

@@ -7,6 +7,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+   
 </head>
 <body class="d-flex flex-column min-vh-100">
     <!-- Código de instalación Cliengo para  giusseppemch@gmail.com -->
@@ -93,7 +94,7 @@
                     url: '@Url.Action("CantidadEnBolsa","Tienda")',
                     type: "GET",
                     dataType: "json",
-                    contentType: "application/json; charset =utf-8",
+                    contentType: "application/json; charset = utf-8",
                     success: function (data) {
                         $("#cantidadbolsa").text(data.cantidad);
                     }
