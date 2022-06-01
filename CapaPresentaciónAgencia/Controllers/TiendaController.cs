@@ -110,7 +110,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
             if (existe)
             {
-                mensaje = "La reserva ya ha sido agregada anteriormente";
+                mensaje = "La reserva ya ha sido realizada anteriormente!!";
             }
             else
             {
