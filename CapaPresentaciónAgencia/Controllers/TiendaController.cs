@@ -159,24 +159,21 @@ namespace CapaPresentaciónAgencia.Controllers
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
+        
+        
+        [HttpPost]
         public JsonResult OperacionBolsaviaje(int idreserva, bool sumar)
         {
             //Convertimos esta sesión en un objeto "Cliente"
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
-            bool existe = new CN_BolsaViaje().ExisteSolicitud(idcliente, idreserva);
+          
 
             bool respuesta = false; //Por defecto vacío
 
             string mensaje = string.Empty; //Por defecto vacío
 
-            if (existe)
-            {
-                mensaje = "La reserva ya ha sido realizada anteriormente!!";
-            }
-            else
-            {
-                respuesta = new CN_BolsaViaje().Operaciones(idcliente, idreserva, true, out mensaje);
-            }
+            respuesta = new CN_BolsaViaje().Operaciones(idcliente, idreserva, true, out mensaje);
+           
             return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
