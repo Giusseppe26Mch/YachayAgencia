@@ -10,7 +10,7 @@ namespace CapaNegocio
 {
     public class CN_BolsaViaje
     {
-        private CD_BOLSAVIAJE objCapaDato = new CD_BOLSAVIAJE();
+        private CD_BolsaViaje objCapaDato = new CD_BolsaViaje();
 
         /*Llamamos al método de la capadato*/
 
@@ -26,6 +26,14 @@ namespace CapaNegocio
         {
             //Pasamos el parámetro
             return objCapaDato.CantidadEnBolsa(idcliente);
+        }
+        public List<Bolsadeviaje> ListarReserva(int idcliente)
+        {
+            return objCapaDato.ListarReserva(idcliente);
+        }
+        public bool Eliminarviaje(int idcliente, int idreserva)
+        {
+            return objCapaDato.Eliminarviaje(idcliente, idreserva);
         }
     }
 }

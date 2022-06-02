@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using CapaEntidad;
 using System.Data.SqlClient;
 using System.Data;
+using System.Globalization;
 
 namespace CapaDatos
 {
-   public class CD_BOLSAVIAJE
+   public class CD_BolsaViaje
     {
         public bool ExisteSolicitud(int idcliente, int idreserva)
         {
@@ -97,6 +98,83 @@ namespace CapaDatos
             }
             return resultado;
         }
+        public List<Bolsadeviaje> ListarReserva(int idcliente)
+        {
+            List<Bolsadeviaje> lista = new List<Bolsadeviaje>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    string query = "select * from fn_obtenerviajescliente(@idcliente)";
+
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@idcliente", idcliente);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add( new Bolsadeviaje()
+                            {
+                                oReserva = new Reserva()
+                                { IdReserva = Convert.ToInt32(dr["IdReserva"]),
+                                Nombre = dr["Nombre"].ToString(),
+                                Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
+                                Stock = Convert.ToInt32(dr["Stock"]),
+                                RutaImagen = dr["RutaImagen"].ToString(),
+                                NombreImagen = dr["NombreImagen"].ToString(),
+                                oPaquete = new PaqueteTuristico() {  Descripcion = dr["DesMarca"].ToString()}
+                                 },
+                                Cantidad = Convert.ToInt32(dr["Cantidad"])
+
+
+                             });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                lista = new List<Bolsadeviaje>();
+            }
+
+            return lista;
+        }
+
+        public bool Eliminarviaje(int idcliente, int idreserva)
+        {
+            bool resultado = true;
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    //Llamamos a los procedimientos almacenados
+                    SqlCommand cmd = new SqlCommand("sp_Eliminarviaje", oconexion);
+                    cmd.Parameters.AddWithValue("IdCliente", idcliente);
+                    cmd.Parameters.AddWithValue("IdReserva", idreserva);
+                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output; //Parámetros de salida
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    oconexion.Open();
+
+                    cmd.ExecuteNonQuery();
+                    resultado = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+            }
+            return resultado;
+        }
+
+
 
     }
 }

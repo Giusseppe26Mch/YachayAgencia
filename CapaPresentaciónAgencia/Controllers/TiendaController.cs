@@ -129,5 +129,73 @@ namespace CapaPresentaciónAgencia.Controllers
         }
 
 
+        [HttpPost]
+        public JsonResult ListarReservasBolsa()
+        {
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
+
+            List<Bolsadeviaje> oLista = new List<Bolsadeviaje>();
+
+            bool conversion;
+
+            oLista = new CN_BolsaViaje().ListarReserva(idcliente).Select(oc => new Bolsadeviaje()
+            {
+                oReserva = new Reserva()
+                {
+                    IdReserva = oc.oReserva.IdReserva,
+                    Nombre = oc.oReserva.Nombre,
+                    oPaquete = oc.oReserva.oPaquete,
+                    Precio = oc.oReserva.Precio,
+                    RutaImagen = oc.oReserva.RutaImagen,
+                    Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oc.oReserva.RutaImagen, oc.oReserva.NombreImagen), out conversion),
+                    Extension = Path.GetExtension(oc.oReserva.NombreImagen)
+
+
+                },
+                Cantidad = oc.Cantidad
+
+
+            }).ToList();
+
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult OperacionBolsaviaje(int idreserva, bool sumar)
+        {
+            //Convertimos esta sesión en un objeto "Cliente"
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
+            bool existe = new CN_BolsaViaje().ExisteSolicitud(idcliente, idreserva);
+
+            bool respuesta = false; //Por defecto vacío
+
+            string mensaje = string.Empty; //Por defecto vacío
+
+            if (existe)
+            {
+                mensaje = "La reserva ya ha sido realizada anteriormente!!";
+            }
+            else
+            {
+                respuesta = new CN_BolsaViaje().Operaciones(idcliente, idreserva, true, out mensaje);
+            }
+            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult EliminarSolicitud(int idreserva)
+        {
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
+          
+
+            bool respuesta = false; //Por defecto vacío
+
+            string mensaje = string.Empty; //Por defecto vacío
+
+            respuesta = new CN_BolsaViaje().Eliminarviaje(idcliente, idreserva);
+
+            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

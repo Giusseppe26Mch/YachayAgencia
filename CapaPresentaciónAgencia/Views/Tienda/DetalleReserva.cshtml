@@ -7,7 +7,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img mb-5 mb-md-0" src="data_image/@Html.DisplayTextFor(m => m.Extension); base64, @Html.DisplayTextFor(m => m.Base64)" alt="..." /></div>
+            <div class="col-md-6"><img class="card-img mb-5 mb-md-0" src="data:image/@Html.DisplayTextFor(m => m.Extension); base64, @Html.DisplayTextFor(m => m.Base64)" alt="..." /></div>
             <div class="col-md-6">
                 <div class="mb-5">Paquete: @Html.DisplayTextFor(m => m.oPaquete.Descripcion)</div>
                 <h1 class="display-5 fw-bolder">  @Html.DisplayTextFor(m => m.Nombre)</h1>
@@ -37,3 +37,46 @@
         </div>
     </div>
 </section>
+
+@section scripts{
+    
+    <script>
+        $(document).on("click", "button.agregarbolsa", function () {
+
+                console.log($(this).data("idreserva"))
+
+                jQuery.ajax({
+                    url: '@Url.Action("AgregarBolsa", "Tienda")',
+                    type: "POST",
+                    data: JSON.stringify({ idreserva: $(this).data("idreserva") }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.respuesta) {
+                            MostrarCantidadBolsa();
+                            //swal({
+
+                            //    title: "Agregado a la Bolsa de viaje",
+                            //    text: "¿Desea ir a la Bolsa de viaje?",
+                            //    type: "success",
+                            //    showCancelButton: true,
+                            //    confirmButtonText: "SÍ",
+                            //    cancelButtonText: "NO",
+                            //    closeOnConfirm: true
+                            //}, function () {
+                            //    window.location.href = 'Url.Action("BolsaViaje","Tienda")'
+
+
+                            //})
+                            swal("", "Agregado a la Bolsa de Viaje", "success");
+                        } else {
+                            swal("", data.mensaje, "warning");
+                        }
+                    }
+                });
+            })
+
+    </script>
+    
+    }
