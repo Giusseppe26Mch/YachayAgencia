@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CapaEntidad
 {
-    class Tour
+    public class Tour
     {
-        public int IdTour { get; set; }
+        public string IdTour { get; set; }
 
         public string FechaTour { get; set; }
 

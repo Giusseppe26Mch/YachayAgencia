@@ -1,0 +1,196 @@
+﻿
+@{
+    ViewBag.Title = "Bolsa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row">
+
+
+
+        <div class="col-sm-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <!--Detalle Reserva-->
+                        <div class="col-sm-9"> </div>
+                        <!--Detalle Fecha Tour Reserva - Contacto-->
+                        <div class="col-sm-3">
+                            <div class="card">
+                        <div class="card-body bg-light">
+                            <h5 class="card-title text-center"> DETALLE RESERVA TOUR</h5>
+                            <form>
+                                <div class="mb-2">
+                                    <label for="cbotour" class="form-label"> FECHA TOUR: </label>
+                                    <select class="form-select form-select-sm" id="cbotour"> </select>
+
+                                </div>
+                                <div class="mb-2">
+                                    <label for="cbodepartamento" class="form-label"> DEPARTAMENTO: </label>
+                                    <select class="form-select form-select-sm" id="cbodepartamento"> </select>
+
+                                </div>
+                                <div class="mb-2">
+                                    <label for="cboprovincia" class="form-label"> PROVINCIA: </label>
+                                    <select class="form-select form-select-sm" id="cboprovincia"> </select>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="cbodistrito" class="form-label"> DISTRITO: </label>
+                                    <select class="form-select form-select-sm" id="cbodistrito"> </select>
+                                </div>
+                                <div class="mb-2">
+                                    <label for="txtnombrecontacto" class="form-label"> CONTACTO: </label>
+                                    <input type="text" class="form-control form-control-sm" id="txtnombrecontacto" autocomplete="off">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="txtdireccion" class="form-label"> DIRECCIÓN: </label>
+                                    <input type="text" class="form-control form-control-sm" id="txtdireccion" autocomplete="off">
+                                </div>
+                                <div class="mb-2">
+                                    <label for="txttelefono" class="form-label"> TELÉFONO: </label>
+                                    <input type="text" class="form-control form-control-sm" id="txttelefono" autocomplete="off">
+                                </div>
+
+                                <div class="d-grid">
+                                    <button class="btn btn-success" type="button" onclick="RealizarPago()">
+                                        <i class="fab fa-paypal"></i> Procesar Cancelación de Reserva
+                                    </button>
+                                </div>
+                            </form>
+
+                             </div>
+                         </div>
+                     </div>
+
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+@section scripts{
+    
+    <script>
+        $(document).ready(function () {
+            ListarFechasTour()
+            ListarDepartamento()
+
+        })
+         function ListarFechasTour() {
+
+
+            $("<option>").attr({ "value": "0","disabled":"disabled", "selected":"true" }).text("SELECCIONAR").appendTo("#cbotour")
+
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerFechasTour","Tienda")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item){
+                            $("<option>").attr({"value":item.IdTour}).text(item.FechaTour).appendTo("#cbotour")
+                        })
+
+                    }
+                }
+            })
+
+        }
+
+
+        function ListarDepartamento() {
+
+
+            $("<option>").attr({ "value": "00","disabled":"disabled", "selected":"true" }).text("SELECCIONAR").appendTo("#cbodepartamento")
+
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerDepartamento","Tienda")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item){
+                            $("<option>").attr({"value":item.IdDepartamento}).text(item.Descripcion).appendTo("#cbodepartamento")
+                        })
+                        ListarProvincia();
+                    }
+                }
+            })
+
+        }
+
+        $("#cbodepartamento").on("change", function () {
+            ListarProvincia();
+        })
+
+        function ListarProvincia() {
+
+            $("#cboprovincia").html("")
+            $("<option>").attr({ "value": "00","disabled":"disabled", "selected":"true" }).text("SELECCIONAR").appendTo("#cboprovincia")
+
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerProvincia","Tienda")',
+                type: "POST",
+                data: JSON.stringify({IdDepartamento:$("#cbodepartamento option:selected").val()}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdProvincia }).text(item.Descripcion).appendTo("#cboprovincia")
+                        })
+                        ListarDistrito()
+                    }
+                }
+            })
+
+        }
+
+        $("#cboprovincia").on("change", function () {
+            ListarDistrito();
+        })
+        function ListarDistrito() {
+
+            $("#cbodistrito").html("")
+            $("<option>").attr({ "value": "00","disabled":"disabled", "selected":"true" }).text("SELECCIONAR").appendTo("#cbodistrito")
+
+
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerDistrito","Tienda")',
+                type: "POST",
+                data: JSON.stringify({ IdDepartamento: $("#cbodepartamento option:selected").val(), IdProvincia: $("#cboprovincia option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+
+                        $.each(data.lista, function (i, item) {
+
+                            $("<option>").attr({ "value": item.IdDistrito }).text(item.Descripcion).appendTo("#cbodistrito")
+                        })
+
+                    }
+                }
+            })
+
+        }
+     
+
+    </script>
+    
+    
+    }

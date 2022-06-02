@@ -196,6 +196,51 @@ namespace CapaPresentaciónAgencia.Controllers
             return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+
+        public JsonResult ObtenerDepartamento()
+        {
+            List<Departamento> oLista = new List<Departamento>();
+
+            oLista = new CN_Ubicacion().ObtenerDepartamento();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerProvincia(string IdDepartamento)
+        {
+            List<Provincia> oLista = new List<Provincia>();
+
+            oLista = new CN_Ubicacion().ObtenerProvincia(IdDepartamento);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult ObtenerDistrito(string IdDepartamento,string IdProvincia)
+        {
+            List<Distrito> oLista = new List<Distrito>();
+
+            oLista = new CN_Ubicacion().ObtenerDistrito(IdDepartamento, IdProvincia);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+
+        public JsonResult ObtenerFechasTour()
+        {
+            List<Tour> oLista = new List<Tour>();
+
+            oLista = new CN_Ubicacion().ObtenerFechasTour();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Bolsa()
+        {
+            return View();
+        }
+
 
     }
 }

@@ -263,6 +263,7 @@
     <Content Include="Views\Tienda\PolíticasAgencia.cshtml" />
     <Content Include="Views\Tienda\TérminosAgencia.cshtml" />
     <Content Include="Views\Tienda\DetalleReserva.cshtml" />
+    <Content Include="Views\Tienda\Bolsa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
