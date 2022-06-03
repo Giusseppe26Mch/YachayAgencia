@@ -26,7 +26,15 @@ namespace CapaPresentaciónAgencia.Controllers
         {
             return View();
         }
-
+        public ActionResult QuienesSomos()
+        {
+            return View();
+        }
+        public ActionResult Contáctanos()
+        {
+            return View();
+        }
+     
 
         public ActionResult DetalleReserva(int idreserva = 0)
         {
