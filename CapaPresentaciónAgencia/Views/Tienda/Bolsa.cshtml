@@ -411,7 +411,7 @@
                 data: JSON.stringify({ idreserva: idreserva, sumar: true }),
                 dataType: "json",
                 contentType: "application/json, charset=utf-8",
-                success: function (data) {
+                 success: function (data) {
 
                     //Imagen de carga se oculte  del botón
                     $(btn).LoadingOverlay("hide")
@@ -420,7 +420,8 @@
 
                         $(input_cantidad).val(cantidad)
                         Calculototal()
-                    } else {
+                    } else
+                    {
                         swal("",data.mensaje,"warning")
                     }
 
@@ -431,11 +432,16 @@
                     $(btn).LoadingOverlay("show")
 
                 },
-                error: function (error) {
+                     error: function (error)
+
+                     {
                     $(btn).LoadingOverlay("hide")
-                }
-            })
-          }
+
+                     }
+
+                 })
+
+             }
 
 
 
@@ -447,7 +453,7 @@
          $(document).on("click", ".btn-eliminar", function () {
            
 
-             var idreserva = $(this).data("idreserva").IdReserva;
+             var idreserva = $(this).data("idreserva");
 
              //Obtener todas las etiquetas dentro del card_reserva (parents)//
              var card_reserva = $(this).parents("div.card-reserva");
@@ -456,7 +462,7 @@
 
            jQuery.ajax({
 
-                url: '@Url.Action("EliminarSolicitud", "Tienda")',
+                url: '@Url.Action("Eliminarviaje", "Tienda")',
                 type: "POST",
                 //Parámetros que se le entregan --- > las ID
                 data: JSON.stringify({ idreserva: idreserva }),
