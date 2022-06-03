@@ -45,7 +45,7 @@
 
                                                 <div class="col-sm-2 align-self-center">
                                                     <div class="d-flex">
-
+                                                        
 
                                                         <button class="btn btn-outline-secondary btn-restar rounder-0">
                                                             <i class="fas fa-minus-circle"></i>
@@ -59,7 +59,7 @@
 
                                                 <div class="col-sm-2 align-self-center">
 
-                                                    <button class="btn btn-outline-danger btn-eliminar"><i class="far fa-trash-alt"></i> ELIMINAR </button>
+                                                    <button class="btn btn-outline-danger btn-eliminar"><i class="fas fa-trash-alt"></i> ELIMINAR </button>
 
                                                 </div>
 
@@ -144,35 +144,73 @@
     
     <script>
         $(document).ready(function () {
-            @*jQuery.ajax({
-                url: '@Url.Action("ListarReservasBolsa","Tienda")',
+            jQuery.ajax({
+                url: '@Url.Action("ListarReservasBolsa", "Tienda")',
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
 
                     $("#reservas-bolsa").html("");
-
                     $("#reservas-bolsa").LoadingOverlay("hide");
 
                     $.each(response.data, function (i, item) {
 
-
                         $("<div>").addClass("card mb-2 card-reserva").append(
-                            "HOLA MUNDO"
-                        ) .appendTo("#reservas-bolsa")
+
+                            $("<div>").addClass("card-body").append(
+                                $("<div>").addClass("row").append(
+
+                                    //Parte 1
+                                    $("<div>").addClass("col-sm-2 align-self-center d-flex justify-content-center").append(
+                                        $("<img>").addClass("rounded").attr({ "src": "data:image/" + item.oReserva.Extension + ";base64," + item.oReserva.Base64 })
+                                            .css({ "width": "100px", "height": "100px" })
+                                    ),
+                                    //Parte 2
+                                    $("<div>").addClass("col-sm-2 align-self-center ").append(
+                                        $("<span>").addClass("font-wight-bold d-block").text(item.oReserva.oPaquete.Descripcion),
+                                        $("<span>").text(item.oReserva.Nombre)
+                                    ),
+                                    //Parte 3
+                                    $("<div>").addClass("col-sm-2 align-self-center ").append(
+                                        $("<span>").text(item.oReserva.Precio.toFixed(2) + "PEN")
+                                    ),
+                                    //Parte 4
+                                    $("<div>").addClass("col-sm-2 align-self-center").append(
+                                        $("<div>").addClass("d-flex").append(
+                                            $("<button>").addClass("btn btn-outline-secondary btn-restar rounded-0").append($("<i>").addClass("fas fa-minus-circle")),
+                                            $("<input>").addClass("form-control input-cantidad p-1 text-center rounded-0").attr({ "disabled": "disabled" })
+                                                .css({ "width": "40px" })
+                                                .data("oReserva", item.oReserva)
+                                                .val(item.Cantidad),
+                                            $("<button>").addClass("btn btn-outline-secondary btn-sumar rounded-0").append($("<i>").addClass("fas fa-plus-circle")),
+
+                                        )
+                                    ),
+                                    $("<div>").addClass("col-sm-2 align-self-center").append(
+                                        $("<button>").addClass("btn btn-outline-danger btn-eliminar").append($("<i>").addClass("fas fa-trash-alt"), "ELIMINAR")
+                                            .data("idreserva",item.oReserva.IdReserva),
+                                    )
+
+                                )
+
+                            )
+                        ).appendTo("#reservas-bolsa")
+
 
 
                     })
-
+                    Calculototal();
+                },
+                error: function (error) {
+                    $("#reservas-bolsa").LoadingOverlay("hide");
+                },
+                beforeSend: function () {
+                    $("#reservas-bolsa").LoadingOverlay("show");
                 }
+            })
 
-
-
-
-            })*@
-       
-            ListarFechasTour()
+            ListarFechasTour(),
             ListarDepartamento()
         })
 
@@ -300,10 +338,151 @@
 
             })
 
-                ("#total").text(sumatotal.toFixed(2))
-                $("total").data("sumatotal",sumatotal)
+                $("#total").text(sumatotal.toFixed(2))
+                $("#total").data("sumatotal",sumatotal)
         }
 
+
+        $(document).on("click", ".btn-sumar", function () {
+            var div_contenedor = $(this).parent("div.d-flex");
+
+            var input_cantidad = $(div_contenedor).find("input.input-cantidad");
+
+            var btn = $(this)
+
+            var idreserva = $(input_cantidad).data("oReserva").IdReserva;
+
+
+
+            jQuery.ajax({
+
+                url: '@Url.Action("Operaciones","Tienda")',
+                type: "POST",
+                //Parámetros que se le entregan --- > las ID
+                data: JSON.stringify({ idreserva: idreserva, sumar: true }),
+                dataType: "json",
+                contentType: "application/json, charset=utf-8",
+                success: function (data) {
+
+                    //Imagen de carga se oculte  del botón
+                    $(btn).LoadingOverlay("hide")
+
+                    if (data.respuesta) {
+                        var cantidad = parseInt($(input_cantidad).val()) + 1;
+                        $(input_cantidad).val(cantidad)
+                        Calculototal()
+                    } else {
+                        swal("",data.mensaje,"warning")
+                    }
+
+
+                },
+                beforeSend: function () {
+                   //Imagen de carga se muestre sobre el botón
+                    $(btn).LoadingOverlay("show")
+
+                },
+                error: function (error) {
+                    $(btn).LoadingOverlay("hide")
+                }
+            })
+        })
+
+
+
+         $(document).on("click", ".btn-restar", function () {
+            var div_contenedor = $(this).parent("div.d-flex");
+
+            var input_cantidad = $(div_contenedor).find("input.input-cantidad");
+
+            var btn = $(this)
+
+             var idreserva = $(input_cantidad).data("oReserva").IdReserva;
+
+             var cantidad = parseInt($(input_cantidad).val()) - 1;
+
+             if (cantidad >= 1) {
+
+                 jQuery.ajax({
+
+                url: '@Url.Action("Operaciones","Tienda")',
+                type: "POST",
+                //Parámetros que se le entregan --- > las ID
+                data: JSON.stringify({ idreserva: idreserva, sumar: true }),
+                dataType: "json",
+                contentType: "application/json, charset=utf-8",
+                success: function (data) {
+
+                    //Imagen de carga se oculte  del botón
+                    $(btn).LoadingOverlay("hide")
+
+                    if (data.respuesta) {
+
+                        $(input_cantidad).val(cantidad)
+                        Calculototal()
+                    } else {
+                        swal("",data.mensaje,"warning")
+                    }
+
+
+                },
+                beforeSend: function () {
+                   //Imagen de carga se muestre sobre el botón
+                    $(btn).LoadingOverlay("show")
+
+                },
+                error: function (error) {
+                    $(btn).LoadingOverlay("hide")
+                }
+            })
+          }
+
+
+
+         })
+
+
+
+
+         $(document).on("click", ".btn-eliminar", function () {
+           
+
+             var idreserva = $(this).data("idreserva").IdReserva;
+
+             //Obtener todas las etiquetas dentro del card_reserva (parents)//
+             var card_reserva = $(this).parents("div.card-reserva");
+
+     
+
+           jQuery.ajax({
+
+                url: '@Url.Action("EliminarSolicitud", "Tienda")',
+                type: "POST",
+                //Parámetros que se le entregan --- > las ID
+                data: JSON.stringify({ idreserva: idreserva }),
+                dataType: "json",
+                contentType: "application/json, charset=utf-8",
+                success: function (data) {
+
+
+                    if (data.respuesta) {
+
+                        card_reserva.remove();
+
+                        MostrarCantidadBolsa();
+
+                        Calculototal();
+
+                    } else {
+                        swal("",data.mensaje,"warning")
+                    }
+
+
+                }
+           
+            })
+        
+        })
     </script>
     
     

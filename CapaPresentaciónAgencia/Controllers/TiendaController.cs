@@ -22,10 +22,7 @@ namespace CapaPresentaciónAgencia.Controllers
         {
             return View();
         }
-        public ActionResult BolsaViaje()
-        {
-            return View();
-        }
+ 
         public ActionResult QuienesSomos()
         {
             return View();
@@ -140,8 +137,8 @@ namespace CapaPresentaciónAgencia.Controllers
         [HttpPost]
         public JsonResult ListarReservasBolsa()
         {
-            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
 
+            int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
             List<Bolsadeviaje> oLista = new List<Bolsadeviaje>();
 
             bool conversion;
@@ -158,7 +155,6 @@ namespace CapaPresentaciónAgencia.Controllers
                     Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oc.oReserva.RutaImagen, oc.oReserva.NombreImagen), out conversion),
                     Extension = Path.GetExtension(oc.oReserva.NombreImagen)
 
-
                 },
                 Cantidad = oc.Cantidad
 
@@ -170,7 +166,7 @@ namespace CapaPresentaciónAgencia.Controllers
         
         
         [HttpPost]
-        public JsonResult OperacionBolsaviaje(int idreserva, bool sumar)
+        public JsonResult Operaciones(int idreserva, bool sumar)
         {
             //Convertimos esta sesión en un objeto "Cliente"
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
@@ -187,7 +183,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
 
         [HttpPost]
-        public JsonResult EliminarSolicitud(int idreserva)
+        public JsonResult Eliminarviaje(int idreserva)
         {
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
           

@@ -75,7 +75,7 @@ namespace CapaDatos
         }
 
 
-        //
+        
 
         public int  CantidadEnBolsa(int idcliente)
         {
@@ -124,15 +124,16 @@ namespace CapaDatos
                                 { IdReserva = Convert.ToInt32(dr["IdReserva"]),
                                 Nombre = dr["Nombre"].ToString(),
                                 Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
-                                Stock = Convert.ToInt32(dr["Stock"]),
                                 RutaImagen = dr["RutaImagen"].ToString(),
                                 NombreImagen = dr["NombreImagen"].ToString(),
-                                oPaquete = new PaqueteTuristico() {  Descripcion = dr["DesMarca"].ToString()}
-                                 },
-                                Cantidad = Convert.ToInt32(dr["Cantidad"])
+                                oPaquete = new PaqueteTuristico() {  Descripcion = dr["DesPaquete"].ToString()}
+                                 }, 
+                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
 
 
-                             });
+
+
+                            });
                         }
                     }
                 }
