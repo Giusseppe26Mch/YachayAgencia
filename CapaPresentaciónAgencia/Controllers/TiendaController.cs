@@ -32,7 +32,6 @@ namespace CapaPresentaciónAgencia.Controllers
         }
 
 
-
         public ActionResult DetalleReserva(int idreserva = 0)
         {
             Reserva oReserva = new Reserva();
@@ -115,7 +114,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
             if (existe)
             {
-                mensaje = "La reserva ya ha sido realizada anteriormente!!";
+                mensaje = "La reserva ya ha sido agregada anteriormente!!";
             }
             else
             {
