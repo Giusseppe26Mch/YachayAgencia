@@ -76,6 +76,7 @@
     }
 }
 
+
 body {
     margin: 0;
     font-family: var(--bs-body-font-family);
@@ -88,6 +89,8 @@ body {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
 
 hr {
     margin: 1rem 0;
@@ -4295,6 +4298,7 @@ textarea.form-control-lg {
             color: #495057;
             background-color: #fff;
             border-color: #dee2e6 #dee2e6 #fff;
+
         }
 
     .nav-tabs .dropdown-menu {

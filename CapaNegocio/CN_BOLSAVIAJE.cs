@@ -18,6 +18,7 @@ namespace CapaNegocio
         {
             return objCapaDato.OperacionBolsaviaje(idcliente, idreserva, sumar, out Mensaje);
         }
+
         public int CantidadEnBolsa(int idcliente)
         {
             //Pasamos el parámetro
