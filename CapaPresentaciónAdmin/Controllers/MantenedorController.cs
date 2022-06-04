@@ -127,7 +127,7 @@ namespace CapaPresentaciónAdmin.Controllers
 
             decimal precio;
 
-            if (decimal.TryParse(oReserva.PrecioTexto, System.Globalization.NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio))
+            if (decimal.TryParse(oReserva.PrecioTexto,System.Globalization.NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio))
             {
                 oReserva.Precio = precio;
             }
