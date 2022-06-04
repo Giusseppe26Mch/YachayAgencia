@@ -356,7 +356,7 @@
 
             jQuery.ajax({
 
-                url: '@Url.Action("Operaciones","Tienda")',
+                url: '@Url.Action("Operacionsolicitud", "Tienda")',
                 type: "POST",
                 //Parámetros que se le entregan --- > las ID
                 data: JSON.stringify({ idreserva: idreserva, sumar: true }),
@@ -405,7 +405,7 @@
 
                  jQuery.ajax({
 
-                url: '@Url.Action("Operaciones","Tienda")',
+                url: '@Url.Action("Operacionsolicitud", "Tienda")',
                 type: "POST",
                 //Parámetros que se le entregan --- > las ID
                 data: JSON.stringify({ idreserva: idreserva, sumar: true }),
@@ -427,11 +427,12 @@
 
 
                 },
-                beforeSend: function () {
+                  beforeSend: function () {
                    //Imagen de carga se muestre sobre el botón
                     $(btn).LoadingOverlay("show")
 
-                },
+
+                     },
                      error: function (error)
 
                      {

@@ -18,9 +18,9 @@ namespace CapaNegocio
         {
             return objCapaDato.ExisteSolicitud(idcliente, idreserva);
         }
-        public bool Operaciones(int idcliente, int idreserva, bool sumar, out string Mensaje)
+        public bool Operacionsolicitud(int idcliente, int idreserva, bool sumar, out string Mensaje)
         {
-            return objCapaDato.Operaciones(idcliente, idreserva, sumar, out Mensaje);
+            return objCapaDato.Operacionsolicitud(idcliente, idreserva, sumar, out Mensaje);
         }
         public int CantidadEnBolsa(int idcliente)
         {

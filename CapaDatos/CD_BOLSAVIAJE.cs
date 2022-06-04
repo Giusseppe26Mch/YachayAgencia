@@ -40,7 +40,7 @@ namespace CapaDatos
             }
             return resultado;
         }
-        public bool Operaciones(int idcliente, int idreserva, bool sumar, out string Mensaje)
+        public bool Operacionsolicitud(int idcliente, int idreserva, bool sumar, out string Mensaje)
         {
             bool resultado = true;
             Mensaje = string.Empty;
@@ -128,11 +128,7 @@ namespace CapaDatos
                                 NombreImagen = dr["NombreImagen"].ToString(),
                                 oPaquete = new PaqueteTuristico() {  Descripcion = dr["DesPaquete"].ToString()}
                                  }, 
-                                Cantidad = Convert.ToInt32(dr["Cantidad"]),
-
-
-
-
+                                Cantidad = Convert.ToInt32(dr["Cantidad"])
                             });
                         }
                     }

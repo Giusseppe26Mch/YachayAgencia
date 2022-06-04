@@ -166,7 +166,7 @@ namespace CapaPresentaciónAgencia.Controllers
         
         
         [HttpPost]
-        public JsonResult Operaciones(int idreserva, bool sumar)
+        public JsonResult Operacionsolicitud(int idreserva, bool sumar)
         {
             //Convertimos esta sesión en un objeto "Cliente"
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
@@ -176,7 +176,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
             string mensaje = string.Empty; //Por defecto vacío
 
-            respuesta = new CN_BolsaViaje().Operaciones(idcliente, idreserva, true, out mensaje);
+            respuesta = new CN_BolsaViaje().Operacionsolicitud(idcliente, idreserva, true, out mensaje);
            
             return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
