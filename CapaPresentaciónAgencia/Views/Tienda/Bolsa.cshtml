@@ -140,7 +140,8 @@
 
     </div>
 </div>
-@section scripts{
+@section scripts
+    {
     
     <script>
         $(document).ready(function () {
@@ -188,8 +189,7 @@
                                         )
                                     ),
                                     $("<div>").addClass("col-sm-2 align-self-center").append(
-                                        $("<button>").addClass("btn btn-outline-danger btn-eliminar").append($("<i>").addClass("fas fa-trash-alt"), "ELIMINAR")
-                                            .data("idreserva",item.oReserva.IdReserva),
+                                        $("<button>").addClass("btn btn-outline-danger btn-eliminar").append($("<i>").addClass("fas fa-trash-alt"), "ELIMINAR").data("idreserva",item.oReserva.IdReserva),
                                     )
 
                                 )
@@ -210,8 +210,8 @@
                 }
             })
 
-            ListarFechasTour(),
-            ListarDepartamento()
+            ListarFechasTour();
+            ListarDepartamento();
         })
 
 
@@ -356,7 +356,7 @@
 
             jQuery.ajax({
 
-                url: '@Url.Action("Operacionsolicitud", "Tienda")',
+                url: '@Url.Action("OperacionBolsaviaje", "Tienda")',
                 type: "POST",
                 //Parámetros que se le entregan --- > las ID
                 data: JSON.stringify({ idreserva: idreserva, sumar: true }),
@@ -405,7 +405,7 @@
 
                  jQuery.ajax({
 
-                url: '@Url.Action("Operacionsolicitud", "Tienda")',
+                url: '@Url.Action("OperacionBolsaviaje", "Tienda")',
                 type: "POST",
                 //Parámetros que se le entregan --- > las ID
                 data: JSON.stringify({ idreserva: idreserva, sumar: true }),

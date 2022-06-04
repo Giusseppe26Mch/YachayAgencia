@@ -40,7 +40,7 @@ namespace CapaDatos
             }
             return resultado;
         }
-        public bool Operacionsolicitud(int idcliente, int idreserva, bool sumar, out string Mensaje)
+        public bool OperacionBolsaviaje(int idcliente, int idreserva, bool sumar, out string Mensaje)
         {
             bool resultado = true;
             Mensaje = string.Empty;
