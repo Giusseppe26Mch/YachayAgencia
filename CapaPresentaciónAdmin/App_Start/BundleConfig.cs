@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace CapaPresentaciónAdmin
 {
@@ -39,7 +38,7 @@ namespace CapaPresentaciónAdmin
                 "~/Content/DataTables/css/whatsapp.css",
                 "~/Content/sweetalert.css",
                 "~/Content/jquery-ui.css"
-                
+
                 ));
         }
     }

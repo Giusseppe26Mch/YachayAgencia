@@ -30,7 +30,8 @@ namespace CapaPresentaciónAgencia.Controllers
         {
             return View();
         }
-     
+
+
 
         public ActionResult DetalleReserva(int idreserva = 0)
         {
@@ -102,7 +103,7 @@ namespace CapaPresentaciónAgencia.Controllers
 
         [HttpPost]
 
-        public JsonResult AgregarBolsa (int idreserva)
+        public JsonResult AgregarBolsa(int idreserva)
         {
             //Convertimos esta sesión en un objeto "Cliente"
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
@@ -120,7 +121,7 @@ namespace CapaPresentaciónAgencia.Controllers
             {
                 respuesta = new CN_BolsaViaje().OperacionBolsaviaje(idcliente, idreserva, true, out mensaje);
             }
-            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet); 
+            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -162,21 +163,21 @@ namespace CapaPresentaciónAgencia.Controllers
 
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
-        
-        
+
+
         [HttpPost]
         public JsonResult OperacionBolsaviaje(int idreserva, bool sumar)
         {
             //Convertimos esta sesión en un objeto "Cliente"
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
-          
+
 
             bool respuesta = false; //Por defecto vacío
 
             string mensaje = string.Empty; //Por defecto vacío
 
             respuesta = new CN_BolsaViaje().OperacionBolsaviaje(idcliente, idreserva, true, out mensaje);
-           
+
             return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
@@ -185,7 +186,7 @@ namespace CapaPresentaciónAgencia.Controllers
         public JsonResult Eliminarviaje(int idreserva)
         {
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
-          
+
 
             bool respuesta = false; //Por defecto vacío
 
@@ -216,7 +217,7 @@ namespace CapaPresentaciónAgencia.Controllers
             return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public JsonResult ObtenerDistrito(string IdDepartamento,string IdProvincia)
+        public JsonResult ObtenerDistrito(string IdDepartamento, string IdProvincia)
         {
             List<Distrito> oLista = new List<Distrito>();
 

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidad;
+using System.Collections.Generic;
 
 namespace CapaNegocio
 {
@@ -32,10 +26,10 @@ namespace CapaNegocio
             {
                 return objCapaDato.Registrar(obj, out Mensaje);
             }
-               else
+            else
             {
-                    
-                    return 0;
+
+                return 0;
             }
 
         }
@@ -47,7 +41,7 @@ namespace CapaNegocio
             {
                 Mensaje = "La descripción de la categoría no puede ser vacío";
             }
-           
+
             if (string.IsNullOrEmpty(Mensaje))
             {
                 return objCapaDato.Editar(obj, out Mensaje);

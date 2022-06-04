@@ -1,13 +1,11 @@
-﻿using System;
+﻿using CapaEntidad;
+using CapaNegocio;
+using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using CapaEntidad;
-using CapaNegocio;
-using ClosedXML.Excel;
 
 namespace CapaPresentaciónAdmin.Controllers
 {
@@ -21,7 +19,7 @@ namespace CapaPresentaciónAdmin.Controllers
 
         public ActionResult Usuarios()
         {
-            
+
 
             return View();
         }
@@ -125,10 +123,10 @@ namespace CapaPresentaciónAdmin.Controllers
         {
             object resultado; //String o cualquier valor
             string mensaje = string.Empty;
-                
-                resultado = new CN_Contacto().Registrar(objeto, out mensaje);
-            
-           
+
+            resultado = new CN_Contacto().Registrar(objeto, out mensaje);
+
+
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
@@ -175,12 +173,12 @@ namespace CapaPresentaciónAdmin.Controllers
             dt.Columns.Add("Cliente", typeof(string));
             dt.Columns.Add("Reserva", typeof(string));
             dt.Columns.Add("Precio", typeof(string));
-            dt.Columns.Add("Cantidad", typeof(string)); 
+            dt.Columns.Add("Cantidad", typeof(string));
             dt.Columns.Add("Total", typeof(string));
             dt.Columns.Add("IdTransaccion", typeof(string));
 
 
-            foreach (Reporte rp in oLista )
+            foreach (Reporte rp in oLista)
             {
                 dt.Rows.Add(new object[]
                 {
@@ -197,10 +195,10 @@ namespace CapaPresentaciónAdmin.Controllers
 
             dt.TableName = "Datos";
 
-            using(XLWorkbook wb = new XLWorkbook())
+            using (XLWorkbook wb = new XLWorkbook())
             {
                 wb.Worksheets.Add(dt);
-                using(MemoryStream stream = new MemoryStream())
+                using (MemoryStream stream = new MemoryStream())
                 {
                     wb.SaveAs(stream);
                     return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ReporteVenta" + DateTime.Now.ToString() + ".xlsx");
@@ -212,8 +210,8 @@ namespace CapaPresentaciónAdmin.Controllers
 
 
 
-    
+
 
     }
 }
-    
+

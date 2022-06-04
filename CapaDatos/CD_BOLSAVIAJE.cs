@@ -1,21 +1,18 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaEntidad;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 
 namespace CapaDatos
 {
-   public class CD_BolsaViaje
+    public class CD_BolsaViaje
     {
         public bool ExisteSolicitud(int idcliente, int idreserva)
         {
             bool resultado = true;
-            
+
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
@@ -51,7 +48,7 @@ namespace CapaDatos
                     //Llamamos a los procedimientos almacenados
                     SqlCommand cmd = new SqlCommand("sp_Operaciones", oconexion);
                     cmd.Parameters.AddWithValue("IdCliente", idcliente);
-                    cmd.Parameters.AddWithValue("IdReserva",idreserva);
+                    cmd.Parameters.AddWithValue("IdReserva", idreserva);
                     cmd.Parameters.AddWithValue("Sumar", sumar);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output; //Parámetros de salida
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -75,9 +72,9 @@ namespace CapaDatos
         }
 
 
-        
 
-        public int  CantidadEnBolsa(int idcliente)
+
+        public int CantidadEnBolsa(int idcliente)
         {
             int resultado = 0;
             try
@@ -94,7 +91,7 @@ namespace CapaDatos
             catch (Exception ex)
             {
                 resultado = 0;
-               
+
             }
             return resultado;
         }
@@ -118,16 +115,18 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
-                            lista.Add( new Bolsadeviaje()
+                            lista.Add(new Bolsadeviaje()
                             {
                                 oReserva = new Reserva()
-                                { IdReserva = Convert.ToInt32(dr["IdReserva"]),
-                                Nombre = dr["Nombre"].ToString(),
-                                Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
-                                RutaImagen = dr["RutaImagen"].ToString(),
-                                NombreImagen = dr["NombreImagen"].ToString(),
-                                oPaquete = new PaqueteTuristico() {  Descripcion = dr["DesPaquete"].ToString()}
-                                 }, 
+                                {
+                                    IdReserva = Convert.ToInt32(dr["IdReserva"]),
+                                    Nombre = dr["Nombre"].ToString(),
+                                    Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
+                                    RutaImagen = dr["RutaImagen"].ToString(),
+                                    NombreImagen = dr["NombreImagen"].ToString(),
+                                    oPaquete = new PaqueteTuristico() { Descripcion = dr["DesPaquete"].ToString() }
+
+                                },
                                 Cantidad = Convert.ToInt32(dr["Cantidad"])
                             });
                         }

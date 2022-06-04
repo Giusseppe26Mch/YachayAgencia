@@ -117,7 +117,7 @@ namespace CapaPresentaciónAdmin.Controllers
         [HttpPost]
         public JsonResult GuardarReserva(string objeto, HttpPostedFileBase archivoImagen) // Registro
         {
-           
+
             string mensaje = string.Empty;
             bool operacion_exitosa = true;
             bool guardar_imagen_exito = true;
@@ -127,7 +127,7 @@ namespace CapaPresentaciónAdmin.Controllers
 
             decimal precio;
 
-            if (decimal.TryParse(oReserva.PrecioTexto,System.Globalization.NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio)) 
+            if (decimal.TryParse(oReserva.PrecioTexto, System.Globalization.NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio))
             {
                 oReserva.Precio = precio;
             }
@@ -140,7 +140,7 @@ namespace CapaPresentaciónAdmin.Controllers
             if (oReserva.IdReserva == 0)
             {
                 int idReservaGenerada = new CN_Reserva().Registrar(oReserva, out mensaje);
-                if (idReservaGenerada !=0)
+                if (idReservaGenerada != 0)
                 {
                     oReserva.IdReserva = idReservaGenerada;
                 }
@@ -157,7 +157,7 @@ namespace CapaPresentaciónAdmin.Controllers
 
             if (operacion_exitosa)
             {
-                if (archivoImagen !=null)
+                if (archivoImagen != null)
                 {
                     string ruta_guardar = ConfigurationManager.AppSettings["ServidorFotos"];
                     string extension = Path.GetExtension(archivoImagen.FileName);
@@ -165,7 +165,7 @@ namespace CapaPresentaciónAdmin.Controllers
 
                     try
                     {
-                        archivoImagen.SaveAs(Path.Combine(ruta_guardar,nombre_imagen));
+                        archivoImagen.SaveAs(Path.Combine(ruta_guardar, nombre_imagen));
                     }
                     catch (Exception ex)
                     {
@@ -186,9 +186,9 @@ namespace CapaPresentaciónAdmin.Controllers
             }
 
 
-            return Json(new { operacionExitosa = operacion_exitosa,idGenerado =oReserva.IdReserva, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+            return Json(new { operacionExitosa = operacion_exitosa, idGenerado = oReserva.IdReserva, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
-       
+
         //Cadena en base 64//
         [HttpPost]
         public JsonResult ImagenReserva(int id)
@@ -196,7 +196,7 @@ namespace CapaPresentaciónAdmin.Controllers
             bool conversion;
             Reserva oreserva = new CN_Reserva().Listar().Where(r => r.IdReserva == id).FirstOrDefault();
 
-            string textoBase64 = CN_Recursos.ConvertirBase64(Path.Combine(oreserva.RutaImagen,oreserva.NombreImagen), out conversion);
+            string textoBase64 = CN_Recursos.ConvertirBase64(Path.Combine(oreserva.RutaImagen, oreserva.NombreImagen), out conversion);
 
             return Json(new
             {
@@ -207,7 +207,7 @@ namespace CapaPresentaciónAdmin.Controllers
             JsonRequestBehavior.AllowGet
 
             );
-        
+
         }
         public JsonResult EliminarReserva(int id)
         {

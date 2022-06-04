@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidad;
+using System.Collections.Generic;
 
 namespace CapaNegocio
 {
@@ -27,12 +22,12 @@ namespace CapaNegocio
                 Mensaje = "El nombre de la Reserva no puede estar vacío";
             }
 
-           else if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
+            else if (string.IsNullOrEmpty(obj.Descripcion) || string.IsNullOrWhiteSpace(obj.Descripcion))
             {
                 Mensaje = "La descripción de la Reserva no puede estar vacío";
             }
 
-            else if (obj.oPaquete.IdPaquete ==0)
+            else if (obj.oPaquete.IdPaquete == 0)
             {
                 Mensaje = "Debe seleccionar un paquete";
             }
@@ -42,7 +37,7 @@ namespace CapaNegocio
                 Mensaje = "Debe seleccionar una categoria";
             }
 
-            else if (obj.Precio ==0)
+            else if (obj.Precio == 0)
             {
                 Mensaje = "Debe ingresar el precio de la reserva";
             }

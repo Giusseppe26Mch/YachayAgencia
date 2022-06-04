@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidad;
+using System.Collections.Generic;
 
 namespace CapaNegocio
 {
@@ -102,7 +98,7 @@ namespace CapaNegocio
             {
                 Mensaje = "El campo de teléfono no puede estar vacío";
             }
-           
+
             else if (string.IsNullOrEmpty(obj.TipoServicio) || string.IsNullOrWhiteSpace(obj.TipoServicio))
             {
                 Mensaje = "El Tipo de servicio no puede estar vacío";

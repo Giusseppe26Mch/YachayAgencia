@@ -189,7 +189,8 @@
                                         )
                                     ),
                                     $("<div>").addClass("col-sm-2 align-self-center").append(
-                                        $("<button>").addClass("btn btn-outline-danger btn-eliminar").append($("<i>").addClass("fas fa-trash-alt"), "ELIMINAR").data("idreserva",item.oReserva.IdReserva),
+                                        $("<button>").addClass("btn btn-outline-danger btn-eliminar").append($("<i>").addClass("fas fa-trash-alt"), "ELIMINAR")
+                                            .data("idreserva", item.oReserva.IdReserva),
                                     )
 
                                 )
@@ -210,11 +211,11 @@
                 }
             })
 
-            ListarFechasTour();
-            ListarDepartamento();
+            ListarFechasTour(),
+            ListarDepartamento()
         })
 
-
+    
          function ListarFechasTour() {
 
 
@@ -451,17 +452,17 @@
 
 
 
-         $(document).on("click", ".btn-eliminar", function () {
-           
+        $(document).on("click", ".btn-eliminar", function () {
 
-             var idreserva = $(this).data("idreserva");
 
-             //Obtener todas las etiquetas dentro del card_reserva (parents)//
-             var card_reserva = $(this).parents("div.card-reserva");
+            var idreserva = $(this).data("idreserva");
 
-     
+            //Obtener todas las etiquetas dentro del card_reserva (parents)//
+            var card_reserva = $(this).parents("div.card-reserva");
 
-           jQuery.ajax({
+
+
+            jQuery.ajax({
 
                 url: '@Url.Action("Eliminarviaje", "Tienda")',
                 type: "POST",
@@ -481,14 +482,14 @@
                         Calculototal();
 
                     } else {
-                        swal("",data.mensaje,"warning")
+                        swal("", data.mensaje, "warning")
                     }
 
 
                 }
-           
+
             })
-        
+
         })
     </script>
     

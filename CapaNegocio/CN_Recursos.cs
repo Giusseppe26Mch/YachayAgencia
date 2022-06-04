@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-
-
-
-using System.Net.Mail;
-using System.Net;
-using System.IO;
 
 namespace CapaNegocio
 {
-   public class CN_Recursos
+    public class CN_Recursos
     {
 
         //ENCRIPTACION, CONVERSION FORMATO IMAGENES
         //MÉTODOS QUE PERMITAN GENERAR CLAVES AUTOMÁTICAS
 
-            public static string GenerarClave()
+        public static string GenerarClave()
         {
             string clave = Guid.NewGuid().ToString("N").Substring(0, 6);    //Permite retornar un código único C#
             return clave;
@@ -82,10 +76,11 @@ namespace CapaNegocio
 
             }
 
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 resultado = false;
             }
-              return resultado;
+            return resultado;
         }
         //Crear método de convertir texto a un formato base 64//
 
@@ -98,10 +93,10 @@ namespace CapaNegocio
                 byte[] bytes = File.ReadAllBytes(ruta);
                 textoBase64 = Convert.ToBase64String(bytes);
             }
-            catch 
+            catch
             {
                 conversion = false;
-               
+
             }
             return textoBase64;
         }

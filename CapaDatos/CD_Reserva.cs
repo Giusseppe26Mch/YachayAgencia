@@ -1,13 +1,10 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using CapaEntidad;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
+using System.Text;
 
 namespace CapaDatos
 {
@@ -47,7 +44,7 @@ namespace CapaDatos
                                      IdReserva = Convert.ToInt32(dr["IdReserva"]),
                                      Nombre = dr["Nombre"].ToString(),
                                      Descripcion = dr["Descripcion"].ToString(),
-                                     oPaquete = new PaqueteTuristico() { IdPaquete = Convert.ToInt32(dr["IdPaquete"]),Descripcion= dr["DesPaquete"].ToString()},
+                                     oPaquete = new PaqueteTuristico() { IdPaquete = Convert.ToInt32(dr["IdPaquete"]), Descripcion = dr["DesPaquete"].ToString() },
                                      ocategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DesCategoria"].ToString() },
                                      Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
                                      Stock = Convert.ToInt32(dr["Stock"]),
@@ -173,7 +170,7 @@ namespace CapaDatos
                     }
 
                 }
-                
+
             }
             catch (Exception ex)
             {

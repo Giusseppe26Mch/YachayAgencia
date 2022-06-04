@@ -1,15 +1,12 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
 namespace CapaPresentaciónAgencia.Controllers
 {
- 
+
     //Implemtar Lógica de las vistas y el ingreso de los clientes a la página 
     public class AccesoController : Controller
     {
@@ -164,7 +161,7 @@ namespace CapaPresentaciónAgencia.Controllers
                 ViewBag.Error = mensaje; //Mensaje de error de acuerdo a lo que indicamos.
                 return View();
             }
-             
+
         }
 
         public ActionResult CerrarSesion()
@@ -175,5 +172,5 @@ namespace CapaPresentaciónAgencia.Controllers
         }
     }
 
-    
+
 }

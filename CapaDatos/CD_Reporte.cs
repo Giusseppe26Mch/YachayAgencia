@@ -1,11 +1,8 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaEntidad;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 
 namespace CapaDatos
@@ -20,14 +17,14 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                   
+
                     SqlCommand cmd = new SqlCommand("sp_ReporteTablero", oconexion);
                     cmd.Parameters.AddWithValue("fechainicio", fechainicio);
                     cmd.Parameters.AddWithValue("fechafin", fechafin);
                     cmd.Parameters.AddWithValue("idtransaccion", idtransaccion);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    
+
                     oconexion.Open();
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
@@ -71,13 +68,13 @@ namespace CapaDatos
 
         public Tablero VerTablero()
         {
-            Tablero  objeto= new Tablero();
+            Tablero objeto = new Tablero();
 
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-      
+
                     SqlCommand cmd = new SqlCommand("sp_ReporteTablero", oconexion);
                     cmd.CommandType = CommandType.StoredProcedure; //Indicamos que es un procedimiento almacenado//
                     oconexion.Open();

@@ -1,10 +1,6 @@
 ﻿using CapaDatos;
 using CapaEntidad;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace CapaNegocio
@@ -35,8 +31,8 @@ namespace CapaNegocio
 
             if (string.IsNullOrEmpty(Mensaje))
             {
-                   obj.Clave = CN_Recursos.ConvertirSha256(obj.Clave);
-                    return objCapaDato.Registrar(obj, out Mensaje);
+                obj.Clave = CN_Recursos.ConvertirSha256(obj.Clave);
+                return objCapaDato.Registrar(obj, out Mensaje);
             }
             else
             {

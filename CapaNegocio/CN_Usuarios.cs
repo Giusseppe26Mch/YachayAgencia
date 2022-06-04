@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaDatos;
+﻿using CapaDatos;
 using CapaEntidad;
+using System.Collections.Generic;
 
 namespace CapaNegocio
 {
@@ -25,7 +21,7 @@ namespace CapaNegocio
             Mensaje = string.Empty;
             //Indicamos que el nombre del usuario no sea vacío
 
-            if (string.IsNullOrEmpty(obj.Nombres) || string.IsNullOrWhiteSpace(obj.Nombres)) 
+            if (string.IsNullOrEmpty(obj.Nombres) || string.IsNullOrWhiteSpace(obj.Nombres))
             {
                 Mensaje = "El Nombre del usuario no puede estar vacío";
             }
@@ -38,7 +34,7 @@ namespace CapaNegocio
                 Mensaje = "El Correo del usuario no puede estar vacío";
             }
 
-            if(string.IsNullOrEmpty(Mensaje))
+            if (string.IsNullOrEmpty(Mensaje))
             {
 
                 //Procedemos a realizar una instrucción para crear una contraseña al correo del usuario//
@@ -66,11 +62,11 @@ namespace CapaNegocio
                 return 0;
             }
 
-           
+
         }
 
         public bool Editar(Usuario obj, out string Mensaje)
-            
+
         {
             Mensaje = string.Empty;
             if (string.IsNullOrEmpty(obj.Nombres) || string.IsNullOrWhiteSpace(obj.Nombres))
@@ -102,15 +98,15 @@ namespace CapaNegocio
 
         public bool CambiarClave(int idusuario, string nuevaclave, out string Mensaje)
         {
-            return objCapaDato.CambiarClave(idusuario,nuevaclave, out Mensaje);
+            return objCapaDato.CambiarClave(idusuario, nuevaclave, out Mensaje);
         }
 
         public bool ReestablecerClave(int idusuario, string correo, out string Mensaje)
         {
-           Mensaje = string.Empty;
+            Mensaje = string.Empty;
 
             string nuevaclave = CN_Recursos.GenerarClave();
-            bool resultado = objCapaDato.ReestablecerClave(idusuario,CN_Recursos.ConvertirSha256(nuevaclave), out Mensaje); /*Encriptamos la nueva clave*/
+            bool resultado = objCapaDato.ReestablecerClave(idusuario, CN_Recursos.ConvertirSha256(nuevaclave), out Mensaje); /*Encriptamos la nueva clave*/
 
             if (resultado)
             {
@@ -123,9 +119,9 @@ namespace CapaNegocio
                 {
                     return true;
                 }
-                else 
+                else
                 {
-                    Mensaje="No se pudo enviar el correo";
+                    Mensaje = "No se pudo enviar el correo";
                     return false;
                 }
             }
