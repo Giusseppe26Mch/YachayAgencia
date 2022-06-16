@@ -2,8 +2,13 @@
 using CapaNegocio;
 using System.Collections.Generic;
 using System.IO;
+using System.Web;
 using System.Linq;
 using System.Web.Mvc;
+using System.Threading.Tasks;
+using System.Data;
+using System.Globalization;
+using System;
 
 namespace CapaPresentaciónAgencia.Controllers
 {
@@ -37,7 +42,7 @@ namespace CapaPresentaciónAgencia.Controllers
             Reserva oReserva = new Reserva();
             bool conversion;
 
-            oReserva = new CN_Reserva().Listar().Where(r => r.IdReserva == idreserva).FirstOrDefault();
+            oReserva = new CN_Reserva().Listar().Where(r => r.IdReserva ==idreserva).FirstOrDefault();
             if (oReserva != null)
             {
                 oReserva.Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oReserva.RutaImagen, oReserva.NombreImagen), out conversion);
@@ -239,6 +244,45 @@ namespace CapaPresentaciónAgencia.Controllers
         public ActionResult Bolsa()
         {
             return View();
+        }
+
+        [HttpPost]
+        //Asíncrono
+        public async Task<JsonResult> ProcesarPago(List<Bolsadeviaje> oListaBolsadeviaje, Venta oVenta)
+        {
+            decimal total = 0;
+
+            DataTable detalle_venta = new DataTable();
+            detalle_venta.Locale = new CultureInfo("es-PE");
+            detalle_venta.Columns.Add("IdReserva", typeof(string));
+            detalle_venta.Columns.Add("Cantidad", typeof(int));
+            detalle_venta.Columns.Add("Total", typeof(decimal));
+   
+            //Iterar la lista de la bolsa, y así mantener el almacenamiento temporal
+
+            foreach(Bolsadeviaje oBolsadeviaje in oListaBolsadeviaje)
+            {
+                decimal subtotal = Convert.ToDecimal(oBolsadeviaje.Cantidad.ToString()) * oBolsadeviaje.oReserva.Precio;
+
+                total += subtotal;
+
+                detalle_venta.Rows.Add(new object[]
+                {
+                    oBolsadeviaje.oReserva.IdReserva,
+                    oBolsadeviaje.Cantidad,
+                    subtotal
+                });
+
+            }
+
+            oVenta.MontoTotal = total;
+            oVenta.IdCliente = ((Cliente)Session["IdCliente"]).IdCliente;
+
+            TempData["Venta"] = oVenta;
+            TempData["DetalleVenta"] = detalle_venta;
+
+            return Json(new { Status = true, Link = "/Agencia/PagoRealizado?idTransaccion=code0001&status=true" }, JsonRequestBehavior.AllowGet);
+
         }
 
 

@@ -140,7 +140,7 @@ namespace CapaPresentaciónAdmin.Controllers
             if (oReserva.IdReserva == 0)
             {
                 int idReservaGenerada = new CN_Reserva().Registrar(oReserva, out mensaje);
-                if (idReservaGenerada != 0)
+                if (idReservaGenerada !=0)
                 {
                     oReserva.IdReserva = idReservaGenerada;
                 }
@@ -202,11 +202,7 @@ namespace CapaPresentaciónAdmin.Controllers
             {
                 conversion = conversion,
                 textobase64 = textoBase64,
-                extension = Path.GetExtension(oreserva.NombreImagen)
-            },
-            JsonRequestBehavior.AllowGet
-
-            );
+                extension = Path.GetExtension(oreserva.NombreImagen)},JsonRequestBehavior.AllowGet);
 
         }
         public JsonResult EliminarReserva(int id)

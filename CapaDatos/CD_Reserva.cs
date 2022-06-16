@@ -5,6 +5,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+
+
 
 namespace CapaDatos
 {

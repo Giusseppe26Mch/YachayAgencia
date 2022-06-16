@@ -7,7 +7,7 @@ namespace CapaNegocio
     public class CN_Reserva
     {
         private CD_Reserva objCapaDato = new CD_Reserva();
-        public List<Reserva> Listar()
+        public List<Reserva>Listar()
         {
             return objCapaDato.Listar();
         }

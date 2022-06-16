@@ -22,7 +22,7 @@ namespace CapaEntidad
 
         public int IdCliente { get; set; }
 
-        public int TotalProducto { get; set; }
+        public int TotalReserva { get; set; }
 
         public decimal MontoTotal { get; set; }
 

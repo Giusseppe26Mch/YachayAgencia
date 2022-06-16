@@ -7,7 +7,7 @@ namespace CapaNegocio
     public class CN_Categoria
     {
         private CD_Categoria objCapaDato = new CD_Categoria();
-        public List<Categoria> Listar()
+        public List<Categoria>Listar()
         {
             return objCapaDato.Listar();
         }

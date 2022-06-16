@@ -20,7 +20,7 @@
                             <div class="me-2">
                                 
                                 <div class="d-flex justify-content-between">
-                                    <h5 class="ms-2 mt-2">Detalle Bolsa de viaje.</h5>
+                                    <h5 class="ms-2 mt-2">Detalle Bolsa de viaje - Persona adicional: + S/. 25.00</h5>
                                     <a class="btn btn-primary" href="@Url.Action("Index","Tienda")"><i class="fas fa-cart-plus"></i> Seguir solicitando + </a>
 
                                 </div>
@@ -331,9 +331,19 @@
             $("input.input-cantidad").each(function (i) {
 
                 var precio = $(this).data("oReserva").Precio;
+               
                 var cantidad = parseFloat($(this).val())
 
-                var subtotal = precio * cantidad;
+                if (cantidad > 1) {
+                    subtotal = precio +( 25 * (cantidad-1));
+                }
+                else
+                {
+                    var subtotal = precio;
+                }
+                
+
+                // var subtotal = precio * cantidad;
 
                 sumatotal += subtotal;
 
