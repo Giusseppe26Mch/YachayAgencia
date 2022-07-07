@@ -276,15 +276,44 @@ namespace CapaPresentaciónAgencia.Controllers
             }
 
             oVenta.MontoTotal = total;
-            oVenta.IdCliente = ((Cliente)Session["IdCliente"]).IdCliente;
+            oVenta.IdCliente = ((Cliente)Session["Cliente"]).IdCliente;
 
             TempData["Venta"] = oVenta;
             TempData["DetalleVenta"] = detalle_venta;
 
-            return Json(new { Status = true, Link = "/Agencia/PagoRealizado?idTransaccion=code0001&status=true" }, JsonRequestBehavior.AllowGet);
+            //Pago realizado recibe 2 parámetros: idTransaccion y el estado
+            return Json(new { Status = true, Link = "/Tienda/PagoRealizado?idtransaccion=code0001&status=true" }, JsonRequestBehavior.AllowGet);
 
         }
 
+
+        //Método que nos devolverá esa vista
+
+        public async Task<ActionResult> PagoRealizado()
+        {
+            string idtransaccion = Request.QueryString["idTransaccion"];
+            bool status = Convert.ToBoolean(Request.QueryString["status"]);
+
+            ViewData["Status"] = status;
+
+            if (status)
+            {
+                Venta oVenta = (Venta)TempData["Venta"];
+
+                DataTable detalle_venta = (DataTable)TempData["DetalleVenta"];
+
+                string mensaje = string.Empty;
+
+                oVenta.IdTransaccion = idtransaccion;
+
+                bool respuesta = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
+
+                ViewData["IdTransaccion"] = oVenta.IdTransaccion;
+            
+            }
+
+            return View();
+        }
 
     }
 }

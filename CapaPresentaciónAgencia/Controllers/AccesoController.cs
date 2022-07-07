@@ -47,7 +47,9 @@ namespace CapaPresentaciónAgencia.Controllers
             resultado = new CN_Cliente().Registrar(objeto, out mensaje); // out parámetro de salida
 
             if (resultado > 0)
+
             {
+                //TempData["SuccessMessage"] = "¡Se ha registrado con éxito!";
                 ViewBag.Error = null;
                 return RedirectToAction("Index", "Acceso");
             }
@@ -87,6 +89,7 @@ namespace CapaPresentaciónAgencia.Controllers
                     Session["Cliente"] = oCliente;//Información de este cliente será llamado
 
                     ViewBag.Error = null;
+                    
                     return RedirectToAction("Index", "Tienda");
                 }
 

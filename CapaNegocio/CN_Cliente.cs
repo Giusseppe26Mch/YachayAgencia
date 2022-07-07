@@ -1,8 +1,10 @@
-﻿using CapaDatos;
-using CapaEntidad;
+﻿using System;
 using System.Collections.Generic;
-
-
+using System.Linq;
+using System.Text;
+using CapaDatos;
+using CapaEntidad;
+using System.Threading.Tasks;
 namespace CapaNegocio
 {
     public class CN_Cliente
@@ -79,7 +81,7 @@ namespace CapaNegocio
             }
             else
             {
-                Mensaje = "No se puso reestablecer la contraseña";
+                Mensaje = "No se pudo reestablecer la contraseña";
                 return false;
             }
 

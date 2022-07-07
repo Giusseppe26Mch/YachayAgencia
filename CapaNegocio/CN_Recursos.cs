@@ -65,7 +65,7 @@ namespace CapaNegocio
 
                 var smtp = new SmtpClient()
                 {
-                    Credentials = new NetworkCredential("giusseppemch@gmail.com", "eeopflvfboscxclv"), // Correo y contraseña específica
+                    Credentials = new NetworkCredential("giusseppemch@gmail.com", "wqyqmdtpuktoeovk"), // Correo y contraseña específica
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true
@@ -76,7 +76,7 @@ namespace CapaNegocio
 
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 resultado = false;
             }

@@ -103,11 +103,7 @@
                         <button class="btn btn-success" type="submit"><i class="fas fa-file-excel"></i> EXPORTAR EN EXCEL</button>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    @*<div class="d-grid mb-2">
-                        <button class="btn btn-danger" type="submit"><i class="fas fa-file-pdf"></i> EXPORTAR EN PDF</button>
-                    </div>*@
-                </div>
+                
 
             </div>
 
@@ -116,7 +112,7 @@
         <hr />
         <div class="row">
             <div class="col-sm-12">
-                <table id="tabladata" class="display cell-border" style="width:100%">
+                <table id="tabla" class="display cell-border" style="width:100%">
                     @*Ancho con width*@
                     <thead>
                         <tr>
@@ -170,10 +166,10 @@
 
             // fechainicio, string fechafin, string idtransaccion
 
-            var Url = '@Url.Action("ListarReporte","Home")' +
+            var Url = '@Url.Action("ListaReporte", "Home")' +
                 "?fechainicio=" + $("#txtfechainicio").val() +
-                "?fechafin=" + $("#txtfechafin").val() +
-                "?idtransaccion" + $("#txtidtransaccion").val()
+                "&fechafin=" + $("#txtfechafin").val() +
+                "&idtransaccion=" + $("#txtidtransaccion").val()
 
                 tabladata = $("#tabla").DataTable({
                 responsive: true,
@@ -195,16 +191,20 @@
                 "language": {
                    "url": "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
                 }
-            });
+
+
+                });
         })
-         $("#btnbuscar").on("click", function () {
-             var nueva_url = '@Url.Action("ListarReporte","Home")'+
-                "?fechainicio=" + $("#txtfechainicio").val() +
-                "?fechafin=" + $("#txtfechafin").val() +
-                "?idtransaccion" + $("#txtidtransaccion").val()
+
+           $("#btnbuscar").on("click", function () {
+             var nueva_url = '@Url.Action("ListaReporte", "Home")'+
+                 "?fechainicio=" + $("#txtfechainicio").val() +
+                "&fechafin=" + $("#txtfechafin").val() +
+                 "&idtransaccion=" + $("#txtidtransaccion").val()
 
             tabladata.ajax.url(nueva_url).load();
-        })
+
+           })
 
 
 

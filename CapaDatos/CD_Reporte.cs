@@ -18,7 +18,7 @@ namespace CapaDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
 
-                    SqlCommand cmd = new SqlCommand("sp_ReporteTablero", oconexion);
+                    SqlCommand cmd = new SqlCommand("sp_ReporteVentas", oconexion);
                     cmd.Parameters.AddWithValue("fechainicio", fechainicio);
                     cmd.Parameters.AddWithValue("fechafin", fechafin);
                     cmd.Parameters.AddWithValue("idtransaccion", idtransaccion);
@@ -40,15 +40,9 @@ namespace CapaDatos
                                      Precio = Convert.ToDecimal(dr["Precio"], new CultureInfo("es-PE")),
                                      Cantidad = Convert.ToInt32(dr["Cantidad"].ToString()),
                                      Total = Convert.ToDecimal(dr["Total"], new CultureInfo("es-PE")),
-                                     IdTransaccion = dr["IdTransaccion"].ToString(),
-                                 }
-                                );
-
-
-
+                                     IdTransaccion = dr["IdTransaccion"].ToString()
+                                 });
                         }
-
-
                     }
                 }
 

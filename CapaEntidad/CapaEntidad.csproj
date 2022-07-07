@@ -54,6 +54,10 @@
     <Compile Include="DetalleVenta.cs" />
     <Compile Include="Distrito.cs" />
     <Compile Include="PaqueteTuristico.cs" />
+    <Compile Include="Paypal\CapturaRespuesta.cs" />
+    <Compile Include="Paypal\OrdenPago.cs" />
+    <Compile Include="Paypal\RespuestaPaypal.cs" />
+    <Compile Include="Paypal\RespuestaPago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Provincia.cs" />
@@ -64,6 +68,7 @@
     <Compile Include="Usuario.cs" />
     <Compile Include="Venta.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

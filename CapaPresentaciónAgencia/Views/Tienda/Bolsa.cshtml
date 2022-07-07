@@ -501,6 +501,75 @@
             })
 
         })
+
+        function RealizarPago() {
+
+            if (parseInt($("#cantidadbolsa").text()) ==0) {
+                swal("", "No se han realizado reservas anteriormente", "warning");
+                return
+            }
+            if ($("#cbodistrito").val() == null || $("#txtnombrecontacto").val() == "" || $("#txtdireccion").val() == ""  || $("#txttelefono").val() == "")
+
+            {
+                swal("", "Debe completar los datos de detalle de reserva", "warning");
+                return
+            }
+
+            var venta = {
+
+                TotalReserva: $("input.input-cantidad").length,
+                MontoTotal: 0,
+                Contacto: $("#txtnombrecontacto").val(),
+                IdDistrito: $("#cbodistrito").val(),
+                Telefono: $("#txttelefono").val(),
+                Direccion: $("#txtdireccion").val()
+
+            }
+
+            var lista_bolsa = [];
+
+            $("input.input-cantidad").each(function (i)
+            {
+                var reserva = $(this).data("oReserva");
+                var cantidad = parseFloat($(this).val())
+
+                lista_bolsa.push({
+                    oReserva: reserva,
+                    Cantidad : cantidad
+                })
+            })
+
+            jQuery.ajax({
+
+                url: '@Url.Action("ProcesarPago", "Tienda")',
+                type: "POST",
+                //Traemos desde el controlador de Tienda el listado de reservas
+                data: JSON.stringify({ oListaBolsadeviaje: lista_bolsa, oVenta: venta}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    $.LoadingOverlay("hide")
+
+                    if (data.Status) {
+
+                        window.location.href = data.Link;
+                    } else {
+                        swal("", "Vuelva a intentarlo en unos minutos", "warning");
+                    }
+
+
+                },
+                beforeSend: function () {$.LoadingOverlay("show")},
+                error: function (error) {$.LoadingOverlay("hide")}
+
+            })
+
+        }
+
+
+
+
     </script>
     
     
