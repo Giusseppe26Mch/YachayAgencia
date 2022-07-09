@@ -1,0 +1,16 @@
+M
+DC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_BolsaViaje.csutf-8L
+CC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Categoria.csutf-8J
+AC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Cliente.csutf-8K
+BC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Contacto.csutf-8J
+AC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Paquete.csutf-8J
+AC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Reporte.csutf-8J
+AC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Reserva.csutf-8L
+CC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Ubicacion.csutf-8K
+BC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Usuarios.csutf-8H
+?C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Venta.csutf-8H
+?C:\Users\51963\source\repos\YachayAgencia\CapaDatos\Conexion.csutf-8W
+NC:\Users\51963\source\repos\YachayAgencia\CapaDatos\Properties\AssemblyInfo.csutf-8N
+EC:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Proveedores.csutf-8^
+SC:\Users\51963\source\repos\YachayAgencia\CapaDatos\Properties\Settings.Designer.csutf-8{
+pC:\Users\51963\source\repos\YachayAgencia\CapaDatos\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

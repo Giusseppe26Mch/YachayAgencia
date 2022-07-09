@@ -1,0 +1,867 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Compilador de Microsoft (R) Visual C#",
+        "version": "4.2.0.0",
+        "fileVersion": "4.2.0-4.22220.2 (1e40aa11)",
+        "semanticVersion": "4.2.0",
+        "language": "es-MX"
+      },
+      "results": [
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Cliente.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 28,
+                  "endLine": 12,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Paquete.cs",
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 28,
+                  "endLine": 8,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_BolsaViaje.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 31,
+                  "endLine": 9,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Cliente' to match pascal case naming rules, consider using 'CnCliente'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Cliente.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 18,
+                  "endLine": 10,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Paquete' to match pascal case naming rules, consider using 'CnPaquete'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Paquete.cs",
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 18,
+                  "endLine": 6,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_BolsaViaje' to match pascal case naming rules, consider using 'CnBolsaViaje'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_BolsaViaje.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Recursos.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 18,
+                  "endLine": 10,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Recursos' to match pascal case naming rules, consider using 'CnRecursos'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Recursos.cs",
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 18,
+                  "endLine": 10,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Contacto.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 29,
+                  "endLine": 9,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Contacto' to match pascal case naming rules, consider using 'CnContacto'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Contacto.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Reporte.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 28,
+                  "endLine": 14,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Reporte' to match pascal case naming rules, consider using 'CnReporte'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Reporte.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 18,
+                  "endLine": 12,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Categoria.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 30,
+                  "endLine": 9,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Categoria' to match pascal case naming rules, consider using 'CnCategoria'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Categoria.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Reserva.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 28,
+                  "endLine": 9,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Reserva' to match pascal case naming rules, consider using 'CnReserva'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Reserva.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 32,
+                  "endLine": 9,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Proveedores' to match pascal case naming rules, consider using 'CnProveedores'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Usuarios.cs",
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 29,
+                  "endLine": 14,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Usuarios' to match pascal case naming rules, consider using 'CnUsuarios'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Usuarios.cs",
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 18,
+                  "endLine": 12,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Ubicacion.cs",
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 30,
+                  "endLine": 9,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make 'objCapaDato' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Venta.cs",
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 26,
+                  "endLine": 15,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Ubicacion' to match pascal case naming rules, consider using 'CnUbicacion'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Ubicacion.cs",
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 18,
+                  "endLine": 7,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Venta' to match pascal case naming rules, consider using 'CnVenta'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Venta.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 18,
+                  "endLine": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S101",
+          "level": "warning",
+          "message": "Rename class 'CN_Paypal' to match pascal case naming rules, consider using 'CnPaypal'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Paypal.cs",
+                "region": {
+                  "startLine": 13,
+                  "startColumn": 18,
+                  "endLine": 13,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 20,
+                  "endLine": 18,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 13,
+                  "endLine": 24,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 50,
+                  "endLine": 24,
+                  "endColumn": 52
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 13,
+                  "endLine": 28,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 13,
+                  "endLine": 32,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 67,
+                  "endLine": 32,
+                  "endColumn": 69
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 13,
+                  "endLine": 36,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 58,
+                  "endLine": 36,
+                  "endColumn": 60
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 13,
+                  "endLine": 40,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 40,
+                  "startColumn": 55,
+                  "endLine": 40,
+                  "endColumn": 57
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 44,
+                  "startColumn": 13,
+                  "endLine": 44,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 13,
+                  "endLine": 48,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 63,
+                  "endLine": 48,
+                  "endColumn": 65
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 13,
+                  "endLine": 53,
+                  "endColumn": 17
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 61,
+                  "endLine": 53,
+                  "endColumn": 63
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 13,
+                  "endLine": 58,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Proveedor.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 13,
+                  "endLine": 63,
+                  "endColumn": 17
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+1",
+              "10": "+1",
+              "11": "+1",
+              "12": "+1",
+              "13": "+1",
+              "14": "+1",
+              "15": "+1",
+              "2": "+1",
+              "3": "+1",
+              "4": "+1",
+              "5": "+1",
+              "6": "+1",
+              "7": "+1",
+              "8": "+1",
+              "9": "+1"
+            }
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "Please review this hard-coded password.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/51963/source/repos/YachayAgencia/CapaNegocio/CN_Recursos.cs",
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 35,
+                  "endLine": 68,
+                  "endColumn": 102
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "S101": {
+          "id": "S101",
+          "shortDescription": "Types should be named in PascalCase",
+          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently. This rule checks whether or not type names are using PascalCase. To reduce noise, two consecutive upper case characters are allowed unless they form the whole type name. So, MyXClass is compliant, but XC on its own is not.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
+          "properties": {
+            "category": "Minor Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Utility classes, which are collections of static members, are not meant to be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "NotConfigurable"
+            ]
+          }
+        },
+        "S2933": {
+          "id": "S2933",
+          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
+          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that's not marked readonly but is only set in the constructor, it could cause confusion about the field's intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        },
+        "S3776": {
+          "id": "S3776",
+          "shortDescription": "Cognitive Complexity of methods should not be too high",
+          "fullDescription": "Cognitive Complexity is a measure of how hard the control flow of a method is to understand. Methods with high Cognitive Complexity will be difficult to maintain.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3776",
+          "properties": {
+            "category": "Critical Code Smell",
+            "isEnabledByDefault": false,
+            "tags": [
+              "C#",
+              "SonarWay",
+              "MainSourceScope",
+              "TestSourceScope"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

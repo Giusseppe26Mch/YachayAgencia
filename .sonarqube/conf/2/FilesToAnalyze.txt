@@ -1,0 +1,17 @@
+﻿C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_BolsaViaje.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Categoria.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Cliente.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Contacto.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Paquete.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Paypal.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Recursos.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Reporte.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Reserva.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Ubicacion.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Usuarios.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Venta.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\Properties\AssemblyInfo.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Proveedor.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\app.config
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\packages.config
+C:\Users\51963\source\repos\YachayAgencia\CapaNegocio\Properties\Settings.settings

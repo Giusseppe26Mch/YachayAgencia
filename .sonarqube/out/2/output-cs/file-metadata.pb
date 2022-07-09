@@ -1,0 +1,17 @@
+O
+FC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_BolsaViaje.csutf-8N
+EC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Categoria.csutf-8L
+CC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Cliente.csutf-8M
+DC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Contacto.csutf-8L
+CC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Paquete.csutf-8K
+BC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Paypal.csutf-8M
+DC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Recursos.csutf-8L
+CC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Reporte.csutf-8L
+CC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Reserva.csutf-8N
+EC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Ubicacion.csutf-8M
+DC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Usuarios.csutf-8J
+AC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Venta.csutf-8Y
+PC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\Properties\AssemblyInfo.csutf-8N
+EC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\CN_Proveedor.csutf-8`
+UC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\Properties\Settings.Designer.csutf-8}
+rC:\Users\51963\source\repos\YachayAgencia\CapaNegocio\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

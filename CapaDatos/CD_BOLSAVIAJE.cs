@@ -33,7 +33,7 @@ namespace CapaDatos
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 resultado = false;
             }
@@ -90,7 +90,7 @@ namespace CapaDatos
                     resultado = Convert.ToInt32(cmd.ExecuteScalar()); //para recuperar un único valor (por ejemplo, un valor agregado) de nuestra BD.
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 resultado = 0;
 
@@ -165,7 +165,7 @@ namespace CapaDatos
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 resultado = false;
             }

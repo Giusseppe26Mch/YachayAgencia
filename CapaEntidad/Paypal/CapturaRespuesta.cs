@@ -10,12 +10,13 @@ namespace CapaEntidad.Paypal
     {
         public string id { get; set; }
         public string status { get; set; }
-
         public List<CP_PurchaseUnit> purchase_units { get; set; }
         public Payer payer { get; set; }
         public List<CP_Link> links { get; set; }
 
     }
+
+
 
     public class Name
     {
@@ -43,18 +44,20 @@ namespace CapaEntidad.Paypal
     {
         public string currency_code { get; set; }
         public string value { get; set; }
-
     }
+
     public class SellerProtection
     {
         public string status { get; set; }
         public List<string> dispute_categories { get; set; }
     }
+
     public class GrossAmount
     {
         public string currency_code { get; set; }
         public string value { get; set; }
     }
+
     public class PaypalFee
     {
         public string currency_code { get; set; }
@@ -66,13 +69,14 @@ namespace CapaEntidad.Paypal
         public string currency_code { get; set; }
         public string value { get; set; }
     }
+
     public class SellerReceivableBreakdown
     {
         public GrossAmount gross_amount { get; set; }
-
         public PaypalFee paypal_fee { get; set; }
         public NetAmount net_amount { get; set; }
     }
+
     public class CP_Link
     {
         public string href { get; set; }
@@ -92,6 +96,7 @@ namespace CapaEntidad.Paypal
         public DateTime create_time { get; set; }
         public DateTime update_time { get; set; }
     }
+
     public class Payments
     {
         public List<Capture> captures { get; set; }

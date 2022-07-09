@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Globalization;
 using System;
+using CapaEntidad.Paypal;
 
 namespace CapaPresentaciónAgencia.Controllers
 {
@@ -257,7 +258,10 @@ namespace CapaPresentaciónAgencia.Controllers
             detalle_venta.Columns.Add("IdReserva", typeof(string));
             detalle_venta.Columns.Add("Cantidad", typeof(int));
             detalle_venta.Columns.Add("Total", typeof(decimal));
-   
+
+
+            List<Item> oListaItem = new List<Item>();
+
             //Iterar la lista de la bolsa, y así mantener el almacenamiento temporal
 
             foreach(Bolsadeviaje oBolsadeviaje in oListaBolsadeviaje)
@@ -265,6 +269,16 @@ namespace CapaPresentaciónAgencia.Controllers
                 decimal subtotal = Convert.ToDecimal(oBolsadeviaje.Cantidad.ToString()) * oBolsadeviaje.oReserva.Precio;
 
                 total += subtotal;
+                oListaItem.Add(new Item()
+                {
+                    name = oBolsadeviaje.oReserva.Nombre,
+                    quantity = oBolsadeviaje.Cantidad.ToString(),
+                    unit_amount = new UnitAmount()
+                    {
+                        currency_code = "PEN",
+                        value = oBolsadeviaje.oReserva.Precio.ToString("G", new CultureInfo("es-PE"))
+                    }
+                });
 
                 detalle_venta.Rows.Add(new object[]
                 {
@@ -275,14 +289,61 @@ namespace CapaPresentaciónAgencia.Controllers
 
             }
 
+            //Creamos los objetos
+            PurchaseUnit purchaseUnit = new PurchaseUnit()
+            {
+                amount = new Amount()
+                {
+                    //Le pasamos el monto total de los precios
+                    currency_code = "USD",
+                    value = total.ToString("G", new CultureInfo("es-PE")),
+                    breakdown = new Breakdown()
+                    {
+                        item_total = new ItemTotal()
+                        {
+                            currency_code = "USD",
+                            value = total.ToString("G", new CultureInfo("es-PE")),
+                        }
+                    }
+                },
+                description = "Compra de un paquete turístico a mi Agencia de Viajes",
+                items = oListaItem
+            };
+
+            OrdenPago oOrdenPago = new OrdenPago()
+            {
+                intent = "CAPTURA",
+                purchase_units = new List<PurchaseUnit>() { purchaseUnit },
+                application_context = new ApplicationContext()
+                {
+                    brand_name = "MiAgencia.com",
+                    landing_page = "NO_PREFERENCE",
+                    user_action = "PAGAR AHORA",
+                    return_url = "http://localhost:5410/Tienda/PagoRealizado",
+                    cancel_url = "http://localhost:5410/Tienda/Bolsa"
+
+                }
+            };
+
+
             oVenta.MontoTotal = total;
             oVenta.IdCliente = ((Cliente)Session["Cliente"]).IdCliente;
 
             TempData["Venta"] = oVenta;
             TempData["DetalleVenta"] = detalle_venta;
 
+
+            CN_Paypal opaypal = new CN_Paypal();
+
+            Respuesta_Paypal<RespuestaPago> respuesta_Paypal = new Respuesta_Paypal<RespuestaPago>();
+            respuesta_Paypal = await opaypal.CrearSolicitud(oOrdenPago);
+
+
+
+
+
             //Pago realizado recibe 2 parámetros: idTransaccion y el estado
-            return Json(new { Status = true, Link = "/Tienda/PagoRealizado?idtransaccion=code0001&status=true" }, JsonRequestBehavior.AllowGet);
+            return Json(respuesta_Paypal,JsonRequestBehavior.AllowGet);
 
         }
 
@@ -291,20 +352,25 @@ namespace CapaPresentaciónAgencia.Controllers
 
         public async Task<ActionResult> PagoRealizado()
         {
-            string idtransaccion = Request.QueryString["idTransaccion"];
-            bool status = Convert.ToBoolean(Request.QueryString["status"]);
+            string token = Request.QueryString["token"];
 
-            ViewData["Status"] = status;
+            CN_Paypal opaypal = new CN_Paypal();
+            Respuesta_Paypal<CapturaRespuesta> respuesta_Paypal = new Respuesta_Paypal<CapturaRespuesta>();
+            respuesta_Paypal = await opaypal.AprobarPago(token);
+            
+           
 
-            if (status)
+            ViewData["Status"] = respuesta_Paypal.Status;
+
+            if (respuesta_Paypal.Status)
             {
                 Venta oVenta = (Venta)TempData["Venta"];
 
                 DataTable detalle_venta = (DataTable)TempData["DetalleVenta"];
 
-                string mensaje = string.Empty;
+                oVenta.IdTransaccion = respuesta_Paypal.Response.purchase_units[0].payments.captures[0].id;
 
-                oVenta.IdTransaccion = idtransaccion;
+                string mensaje = string.Empty;
 
                 bool respuesta = new CN_Venta().Registrar(oVenta, detalle_venta, out mensaje);
 
