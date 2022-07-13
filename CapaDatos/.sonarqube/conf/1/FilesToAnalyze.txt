@@ -1,0 +1,15 @@
+﻿C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_BolsaViaje.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Categoria.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Cliente.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Contacto.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Paquete.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Reporte.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Reserva.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Ubicacion.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Usuarios.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Venta.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\Conexion.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\Properties\AssemblyInfo.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\CD_Proveedores.cs
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\app.config
+C:\Users\51963\source\repos\YachayAgencia\CapaDatos\Properties\Settings.settings

@@ -16,7 +16,7 @@ namespace CapaPresentaciónAdmin.Controllers
         {
             return View();
         }
-
+        [Authorize(Users = "giusseppemch@gmail.com")]
         public ActionResult Usuarios()
         {
 

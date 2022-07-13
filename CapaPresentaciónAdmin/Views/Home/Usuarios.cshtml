@@ -59,13 +59,16 @@
 
                 <div class="row g-2">
                     <div class="col-sm-6">
+
                         <label for="txtnombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="txtnombres" autocomplete="off">
+
+                        <input type="text" class="form-control" id="txtnombres" autocomplete="off" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{5,48}">
+
                     </div>
 
                     <div class="col-sm-6">
                         <label for="txtapellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="txtapellidos" autocomplete="off">
+                        <input type="text" class="form-control" id="txtapellidos" autocomplete="off" required pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{5,48}">
                     </div>
 
                     <div class="col-sm-6">
@@ -105,7 +108,7 @@
 @section scripts{
     <script>
         var tabladata;
-        var filaSeleccionada; 
+        var filaSeleccionada;
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
@@ -148,10 +151,11 @@
             $("#txtnombres").val("");
             $("#txtapellidos").val("");
             $("#txtcorreo").val("");
-            $("#cboactivo").val(1); 
-            $("#mensajeError").hide(); 
+            $("#cboactivo").val(1);
+            $("#mensajeError").hide();
 
             if (json != null) {
+      
 
                 $("#txtid").val(json.IdUsuario);
                 $("#txtnombres").val(json.Nombres);
@@ -172,14 +176,14 @@
 
             console.log(data)
             abrirModal(data)
-          
+
         })
         $("#tabla tbody").on("click", '.btn-eliminar', function () {
 
             var usuarioseleccionado = $(this).closest("tr");
 
             var data = tabladata.row(usuarioseleccionado).data();
-            
+
             swal({
                 title: "¿Está seguro?",
                 text: "¿Desea eliminar el usuario?",
@@ -189,7 +193,7 @@
                 confirmButtonText: "Sí",
                 cancelButtonText: "No",
                 closeOnConfirm: true
-                
+
             },
                 function () {
                     jQuery.ajax({
@@ -221,9 +225,9 @@
                 Apellidos:$("#txtapellidos").val(),
                 Correo: $("#txtcorreo").val(),
                 Nombres: $("#txtnombres").val()
-                
+
             }
-           
+
             //Estructura Ajax para hacer el llamado de los métodos de home Controller
 
             jQuery.ajax({
@@ -235,7 +239,7 @@
                 success: function (data) {
 
                     $(".modal-body").LoadingOverlay("hide")
-                    //USUARIO NUEVO 
+                    //USUARIO NUEVO
                     if (Usuario.IdUsuario == 0) {
 
                         if (data.resultado != 0) {
@@ -273,7 +277,7 @@
                        size: 14
                    })
                 }
-         
+
             });
         }
 

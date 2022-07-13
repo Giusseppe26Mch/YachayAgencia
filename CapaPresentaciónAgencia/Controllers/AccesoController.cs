@@ -27,6 +27,10 @@ namespace CapaPresentaciónAgencia.Controllers
         {
             return View();
         }
+
+
+
+
         [HttpPost]
         public ActionResult Registrar(Cliente objeto) // Cambiar contraseña del cliente
         {

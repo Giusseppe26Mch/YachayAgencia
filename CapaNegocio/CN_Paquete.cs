@@ -21,6 +21,7 @@ namespace CapaNegocio
                 Mensaje = "La descripción del paquete no puede ser vacío";
             }
 
+
             if (string.IsNullOrEmpty(Mensaje))
             {
                 return objCapaDato.Registrar(obj, out Mensaje);

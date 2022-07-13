@@ -19,6 +19,7 @@ namespace CapaNegocio
             //Indicamos que el nombre del Cliente no sea vacío
 
             if (string.IsNullOrEmpty(obj.Nombres) || string.IsNullOrWhiteSpace(obj.Nombres))
+
             {
                 Mensaje = "El Nombre del Cliente no puede estar vacío";
             }
